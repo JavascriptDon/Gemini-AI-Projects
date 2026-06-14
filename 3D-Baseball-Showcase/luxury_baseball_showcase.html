@@ -716,6 +716,23 @@
             mainBall = new THREE.Mesh(sphereGeom, ballMaterial);
             scene.add(mainBall);
 
+			const moveBallX = gsap.quickTo(mainBall.position, "x", { duration: 0.8, ease: "power2.out" });
+			const moveBallY = gsap.quickTo(mainBall.position, "y", { duration: 0.8, ease: "power2.out" });
+			
+			container.addEventListener('pointermove', (event) => {
+			    const rect = container.getBoundingClientRect();
+			    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+			    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+			
+			    moveBallX(-x * 0.5);
+			    moveBallY(-y * 0.5);
+			});
+			
+			container.addEventListener('pointerleave', () => {
+			    moveBallX(0);
+			    moveBallY(0);
+			});
+
             // CREATE HIGH-FIDELITY BASEBALL SEAM STITCHES
             generateBaseballStitches(1.6);
 
@@ -745,6 +762,7 @@
                     stitchInstances.rotation.y = mainBall.rotation.y;
                     stitchInstances.rotation.x = mainBall.rotation.x;
                     stitchInstances.rotation.z = mainBall.rotation.z;
+					stitchInstances.position.copy(mainBall.position);
                 }
 
                 // Mouse follow physics interpolation
