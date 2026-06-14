@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himeji Castle Stylistic Progression</title>
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAN5zbAGNlbQCli2gA2a+BAEVAPwAWHx0ALC86AF1YWQAxMz0ADA0MAL6PWQDdvJYA69WzADQ3QADWp2oALDxPABISEgAvPlUAnKehANnk4AAoJywATVBdAMyZUwDUzrEAuYZIAFhwhgBZU1QAFBwnAFlYWgDKoHEAwo1CADqm8QCsfD0A37uLAA0NDQDUpGsAvsnHABgkNgDRqHcA18asAOPDmgArRlwAHi88AOrGmgBKRSwAK2qaAL6KQwAVJBwAXFdYAF1bUgDnz6wAxo9JAC04RQDHlkwA0qxyAOO/jwAREREAemMrAFNFUAAiKjcAIzIrAMqaWACxhVAAIklvAM+yjQAuRl0AKiw0AExFJADPnlsAHRQsAD9GVAA9SVQA0KFkAElERQDVo2EAJFiKAOC+lgBjXWIA5sSWAMeZXwCVrLMA5sSfAM21jgAvKi8AMCovAC5qnADetYUAQkVSAL6SSwDq0q4ATkJJAAwPDQDGkUgADg8NAM/j4QCul34AEBAQACEnMAAdNS0AAgICAENAMgAhOC0ATz0gADtATQDLn2AAT3eWAODNsgBxam8AT3+cABUrIgDk0bUALjQ8AAsLCwDSpGYADA8OAGBcYQAfIisA6dO7ADI3RQAvWX0Az8itALV/OADBzsgAPDc8AB04LgDq3ccAuYY7ACUrNACN0vAAGhQdAE1CJwAWIhoAJ1FvAN+0ewDU0cgALTBDACs4SQCi2eoAHC8mACw7UgBPSU4Aw5NZACAsJgDTqnkAt4Y8ANyucwBUVFQAx55xAEk+QACGwdEAwYo/ADqi6wAXJCEAwI9FAAoKCgDjtX8Aqns3ABknIQCuejQAT0JDANe/lADEkUsAFiM5AOjUtwDkvIsA16hrACQmJwAjJS0AOzhBACcoLQChcDIASFdnAAUFBQBFPUcAYFdDABQlHAASKBwAUVhqACkxPwDKo28AwYtMAF1YYQAXLSIAXnyNADgzMwAODg4A5bqGAN3bzQDZp2kAus3aAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACtMLGwhJWDOkQyoHyemQZkm1thcYtuO68tB7a3OYKurQp9EbpGXKmPZT1eI3NmY3FqbbKNSh0bdGwCTggxBbkSlriFindDsxZwGjwQVoFIKnsTLhQJqoBYdTWoQJhfYlF5GCZ+k1QcR6xoQom+vKeHU6FMM1oNdg4rASWkb2sVKLQ3oyI4TyxVjCBSKU0MiEFZPnKmkoacu3ilVwSQJx6UnZGaNhdFS70PJElpUI4LP2ern3p/lx9dojS1LxkhA2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAA=" rel="icon" type="image/x-icon">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        /* Active style button glow */
+        .active-glow-0 { box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); border-color: rgba(239, 68, 68, 0.6); }
+        .active-glow-1 { box-shadow: 0 0 15px rgba(156, 163, 175, 0.4); border-color: rgba(156, 163, 175, 0.6); }
+        .active-glow-2 { box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); border-color: rgba(14, 165, 233, 0.6); }
+        .active-glow-3 { box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); border-color: rgba(236, 72, 153, 0.6); }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header Navigation -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-pink-500 via-sky-500 to-amber-400 flex items-center justify-center shadow-lg shadow-sky-500/10">
+                <svg class="w-6 h-6 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+            </div>
+            <div>
+                <h1 class="text-lg font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">Castle Morphosis</h1>
+                <p class="text-xs text-slate-400">4-Part Stylistic Progression of Himeji Castle</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3">
+            <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Ref: kanr.jpg</span>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="flex-grow flex flex-col lg:flex-row h-[calc(100vh-73px)] overflow-hidden">
+        
+        <!-- Left panel - Interactive canvas viewer -->
+        <div class="flex-grow flex flex-col justify-between p-4 lg:p-6 bg-slate-950/60 relative overflow-hidden">
+            
+            <!-- Canvas Container -->
+            <div class="flex-grow flex items-center justify-center relative w-full h-[60vh] lg:h-auto">
+                <div class="relative max-h-full max-w-full aspect-[4/5] rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/40 shadow-2xl flex items-center justify-center" id="canvas-wrapper">
+                    <!-- The Interactive Canvas -->
+                    <canvas id="morphCanvas" class="w-full h-full max-h-full object-contain cursor-crosshair"></canvas>
+                    
+                    <!-- Loader -->
+                    <div id="canvas-loader" class="absolute inset-0 bg-slate-950 flex flex-col items-center justify-center space-y-4 transition-opacity duration-500 pointer-events-none">
+                        <div class="w-12 h-12 rounded-full border-4 border-sky-500 border-t-transparent animate-spin"></div>
+                        <p class="text-sm text-slate-400 tracking-wider">Generating procedural geometry...</p>
+                    </div>
+
+                    <!-- Split comparison guide overlay -->
+                    <div id="split-line" class="absolute top-0 bottom-0 w-0.5 bg-white/40 backdrop-blur-sm hidden pointer-events-none">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900 border border-white/30 flex items-center justify-center shadow-lg text-white text-xs">
+                            ↔
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Playback Timeline and Controllers -->
+            <div class="mt-4 p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-sm space-y-4">
+                <!-- Timeline slider -->
+                <div class="space-y-1">
+                    <div class="flex justify-between text-xs font-semibold px-1">
+                        <span class="text-rose-400">1. Crayon</span>
+                        <span class="text-slate-400">2. Graphite</span>
+                        <span class="text-sky-400">3. Glass Reflection</span>
+                        <span class="text-pink-400">4. Risograph</span>
+                    </div>
+                    <div class="relative group pt-2">
+                        <input type="range" id="timeline" min="0" max="3" step="0.001" value="0" 
+                               class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-sky-500 focus:outline-none transition-all">
+                        <!-- Progress segments background highlight -->
+                        <div class="absolute top-[14px] left-0 h-1 rounded bg-gradient-to-r from-rose-500 via-slate-400 via-sky-500 to-pink-500 opacity-20 pointer-events-none -z-10 w-full"></div>
+                    </div>
+                </div>
+
+                <!-- Media Controls -->
+                <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+                    <div class="flex items-center space-x-2">
+                        <button id="btn-play" class="p-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 transition-colors shadow-lg shadow-sky-500/10 flex items-center justify-center">
+                            <!-- Play Icon -->
+                            <svg id="icon-play" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                            <!-- Pause Icon (hidden by default) -->
+                            <svg id="icon-pause" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="text-xs text-slate-400 select-none">
+                            <span id="txt-playstate">Paused</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage quick-jump buttons -->
+                    <div class="flex space-x-1 bg-slate-950 p-1 rounded-lg border border-slate-800">
+                        <button onclick="setTimeline(0)" class="px-3 py-1 rounded text-xs font-medium transition-all hover:bg-slate-800 text-rose-400">Crayon</button>
+                        <button onclick="setTimeline(1)" class="px-3 py-1 rounded text-xs font-medium transition-all hover:bg-slate-800 text-slate-300">Graphite</button>
+                        <button onclick="setTimeline(2)" class="px-3 py-1 rounded text-xs font-medium transition-all hover:bg-slate-800 text-sky-400">Glass</button>
+                        <button onclick="setTimeline(3)" class="px-3 py-1 rounded text-xs font-medium transition-all hover:bg-slate-800 text-pink-400">Risograph</button>
+                    </div>
+
+                    <!-- Split comparison toggle -->
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs text-slate-400">Split View:</span>
+                        <button id="btn-split" class="relative inline-flex h-6 w-11 items-center rounded-full bg-slate-800 transition-colors focus:outline-none">
+                            <span id="split-toggle-dot" class="inline-block h-4 w-4 transform rounded-full bg-slate-400 transition-transform translate-x-1"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right panel - Dynamic controls & descriptions based on active style -->
+        <div class="w-full lg:w-96 border-t lg:border-t-0 lg:border-l border-slate-800 bg-slate-900/40 p-6 flex flex-col justify-between overflow-y-auto h-auto lg:h-full">
+            
+            <div class="space-y-6">
+                <!-- Info Section -->
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-sky-500 font-bold">Stylistic Stage</span>
+                    <h2 id="style-title" class="title-font text-2xl font-bold mt-1 text-white">Vibrant Crayon</h2>
+                    <p id="style-desc" class="text-sm text-slate-400 mt-2 leading-relaxed">
+                        Features playful, hand-drawn character designs and heavily textured waxy crayons layered on raw, granulated craft paper.
+                    </p>
+                </div>
+
+                <!-- Custom Photo Integration & Output (New Sections) -->
+                <div class="border-t border-slate-800/80 pt-4 space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Creative Options</h3>
+                    
+                    <div class="grid grid-cols-2 gap-2">
+                        <!-- Custom Image Upload -->
+                        <button id="btn-upload" class="flex items-center justify-center space-x-1.5 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg text-xs font-medium border border-slate-700 transition-all">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                            <span>Upload Image</span>
+                        </button>
+                        <input type="file" id="image-input" accept="image/*" class="hidden">
+
+                        <!-- Export Artwork as PNG -->
+                        <button id="btn-download" class="flex items-center justify-center space-x-1.5 px-3 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-medium shadow-md shadow-sky-600/10 transition-all">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            <span>Save Image</span>
+                        </button>
+                    </div>
+
+                    <!-- Fallback Reset Switch -->
+                    <button id="btn-reset-default" class="w-full py-1.5 bg-slate-900/60 hover:bg-slate-900 text-xs font-semibold text-slate-400 hover:text-rose-400 border border-slate-800/80 rounded-lg transition-all hidden">
+                        ↺ Reset to Default Castle
+                    </button>
+                </div>
+
+                <!-- Custom Parameters per Style -->
+                <div class="border-t border-slate-800/80 pt-4 space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Style Engine Parameters</h3>
+                    
+                    <!-- Parameter controls (dynamically updated by style index) -->
+                    <div id="parameters-container" class="space-y-4">
+                        <!-- Dynamic inputs will be rendered here by JS -->
+                    </div>
+                </div>
+
+                <!-- Aesthetic Info Cards -->
+                <div class="p-4 rounded-xl bg-slate-950/40 border border-slate-800/60 text-xs text-slate-400 space-y-2">
+                    <h4 class="font-bold text-slate-300">Progression Concept:</h4>
+                    <p class="leading-relaxed">This visual transformation morphs any architecture or image from organic hand-drawn textures (Crayon & Pencil) through physical refraction physics (Glass) to tactile mechanical print aesthetics (Risograph).</p>
+                    <div class="flex items-center space-x-1.5 pt-1 text-sky-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>Upload a custom image to test style propagation instantly!</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer in panel -->
+            <div class="pt-6 border-t border-slate-800/80 mt-6 flex justify-between items-center text-xs text-slate-500">
+                <span>Made with Canvas & SVG Vector Engine</span>
+                <span class="hover:text-sky-400 cursor-pointer transition-colors" onclick="resetDefaults()">Reset Controls</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- Vector Geometry of Castle ---
+        const castleGeometry = {
+            mountains: [
+                { type: 'path', pts: [[-0.2, 0.7], [0.1, 0.68], [0.3, 0.72], [0.6, 0.69], [0.9, 0.74], [1.2, 0.71], [1.2, 1.0], [-0.2, 1.0]], color: '#161c2e' }
+            ],
+            moon: { cx: 0.45, cy: 0.53, r: 0.05, shadowOffset: 0.015 },
+            castle: [
+                { id: 'stone-base', type: 'polygon', pts: [[0.22, 0.76], [0.78, 0.76], [0.84, 0.88], [0.16, 0.88]], style: 'base' },
+                { id: 't1-wall', type: 'polygon', pts: [[0.24, 0.7], [0.76, 0.7], [0.78, 0.76], [0.22, 0.76]], style: 'wall' },
+                { id: 't1-roof', type: 'polygon', pts: [[0.2, 0.7], [0.8, 0.7], [0.77, 0.68], [0.23, 0.68]], style: 'roof' },
+                { id: 't1-gables', type: 'path', pts: [[0.45, 0.7], [0.5, 0.65], [0.55, 0.7]], style: 'gable' },
+                { id: 't2-wall', type: 'polygon', pts: [[0.28, 0.61], [0.72, 0.61], [0.74, 0.68], [0.26, 0.68]], style: 'wall' },
+                { id: 't2-roof', type: 'polygon', pts: [[0.25, 0.61], [0.75, 0.61], [0.71, 0.59], [0.29, 0.59]], style: 'roof' },
+                { id: 't3-wall', type: 'polygon', pts: [[0.34, 0.51], [0.66, 0.51], [0.68, 0.59], [0.32, 0.59]], style: 'wall' },
+                { id: 't3-roof-left', type: 'polygon', pts: [[0.3, 0.51], [0.48, 0.51], [0.46, 0.49], [0.34, 0.49]], style: 'roof' },
+                { id: 't3-roof-right', type: 'polygon', pts: [[0.52, 0.51], [0.7, 0.51], [0.66, 0.49], [0.54, 0.49]], style: 'roof' },
+                { id: 't4-wall', type: 'polygon', pts: [[0.4, 0.41], [0.6, 0.41], [0.62, 0.49], [0.38, 0.49]], style: 'wall' },
+                { id: 't4-roof', type: 'polygon', pts: [[0.36, 0.41], [0.64, 0.41], [0.6, 0.38], [0.4, 0.38]], style: 'roof' },
+                { id: 't5-wall', type: 'polygon', pts: [[0.44, 0.28], [0.56, 0.28], [0.58, 0.38], [0.42, 0.38]], style: 'wall' },
+                { id: 't5-roof', type: 'polygon', pts: [[0.4, 0.28], [0.6, 0.28], [0.55, 0.24], [0.45, 0.24]], style: 'roof' },
+                { id: 'side-keep-1', type: 'polygon', pts: [[0.05, 0.78], [0.18, 0.78], [0.2, 0.85], [0.03, 0.85]], style: 'wall' },
+                { id: 'side-roof-1', type: 'polygon', pts: [[0.02, 0.78], [0.19, 0.78], [0.17, 0.76], [0.04, 0.76]], style: 'roof' },
+                { id: 'side-keep-2', type: 'polygon', pts: [[0.45, 0.88], [0.68, 0.88], [0.7, 0.96], [0.43, 0.96]], style: 'wall' },
+                { id: 'side-roof-2', type: 'polygon', pts: [[0.42, 0.88], [0.71, 0.88], [0.68, 0.86], [0.45, 0.86]], style: 'roof' },
+                { id: 'w-t5-1', type: 'polygon', pts: [[0.46, 0.32], [0.49, 0.32], [0.49, 0.35], [0.46, 0.35]], style: 'window' },
+                { id: 'w-t5-2', type: 'polygon', pts: [[0.51, 0.32], [0.54, 0.32], [0.54, 0.35], [0.51, 0.35]], style: 'window' },
+                { id: 'w-t4-1', type: 'polygon', pts: [[0.43, 0.44], [0.46, 0.44], [0.46, 0.47], [0.43, 0.47]], style: 'window' },
+                { id: 'w-t4-2', type: 'polygon', pts: [[0.54, 0.44], [0.57, 0.44], [0.57, 0.47], [0.54, 0.47]], style: 'window' },
+                { id: 'w-t3-1', type: 'polygon', pts: [[0.36, 0.54], [0.39, 0.54], [0.39, 0.57], [0.36, 0.57]], style: 'window' },
+                { id: 'w-t3-2', type: 'polygon', pts: [[0.61, 0.54], [0.64, 0.54], [0.64, 0.57], [0.61, 0.57]], style: 'window' }
+            ],
+            trees: [
+                { cx: 0.15, cy: 0.9, r: 0.08, color: '#091512' },
+                { cx: 0.3, cy: 0.92, r: 0.09, color: '#0b1915' },
+                { cx: 0.65, cy: 0.85, r: 0.07, color: '#0a1a14' },
+                { cx: 0.8, cy: 0.88, r: 0.1, color: '#081711' }
+            ]
+        };
+
+        // --- Style Metadata & Engine Settings ---
+        const stylesConfig = [
+            {
+                name: "Vibrant Crayon",
+                desc: "Playful, hand-drawn designs and waxy crayons layered on raw, granulated craft paper. Strong, saturated colors and textured, unpolished strokes dominate.",
+                params: [
+                    { key: 'waxiness', label: 'Crayon Waxiness (Noise)', min: 0, max: 10, val: 5 },
+                    { key: 'strokeJitter', label: 'Stroke Jitter (Playfulness)', min: 1, max: 15, val: 8 },
+                    { key: 'paperGrain', label: 'Paper Grain Opacity', min: 0.1, max: 0.9, val: 0.6 },
+                ]
+            },
+            {
+                name: "Graphite Pencil",
+                desc: "Monochromatic graphite design utilizing multi-directional cross-hatching, varied lead softness, and raw charcoal sketches. A 12fps 'line boiling' effect yields organic visual vibration.",
+                params: [
+                    { key: 'lineBoiling', label: 'Line Boiling Jitter', min: 0, max: 8, val: 4 },
+                    { key: 'hatchingDensity', label: 'Hatching Density', min: 5, max: 30, val: 18 },
+                    { key: 'lineWeight', label: 'Line Weight Variant', min: 1, max: 6, val: 2 },
+                ]
+            },
+            {
+                name: "3D Translucent Glass",
+                desc: "Hyper-realistic rendering with complex ray refractive algorithms. Featuring inner chromatic dispersion, caustic light patterns, high specular reflections, and soft internal illumination.",
+                params: [
+                    { key: 'refraction', label: 'Refraction Index', min: 0.1, max: 3.0, val: 1.4 },
+                    { key: 'glowIntensity', label: 'Glow Dispersion', min: 0, max: 40, val: 25 },
+                    { key: 'caustics', label: 'Caustic Light Intensity', min: 0.1, max: 1.0, val: 0.7 },
+                ]
+            },
+            {
+                name: "Tactile Risograph",
+                desc: "A stunning mechanical physical print style applying a limited three-color screen palette (teal, magenta, goldenrod). Includes coarse halftone grid dot-matrix and intentional offset overlays.",
+                params: [
+                    { key: 'registrationOffset', label: 'Overlay Misalignment', min: 0, max: 12, val: 5 },
+                    { key: 'halftoneSize', label: 'Halftone Dot Matrix', min: 2, max: 10, val: 4 },
+                    { key: 'inkBleed', label: 'Ink Absorption Bleed', min: 1, max: 8, val: 3 },
+                ]
+            }
+        ];
+
+        // System State
+        let activeStage = 0; 
+        let isPlaying = false;
+        let lastFrameTime = 0;
+        let playSpeed = 0.15; 
+        let splitMode = false;
+        let canvas, ctx;
+        let animationFrameId;
+        let noiseCache = null;
+
+        // Custom image upload properties
+        let uploadedImg = null;
+        let risoTealCanvas = null;
+        let risoPinkCanvas = null;
+        let risoYellowCanvas = null;
+        let grayscaleCanvas = null;
+
+        // Active parameter values (loaded from stylesConfig default values)
+        const activeParams = {};
+        stylesConfig.forEach(st => {
+            st.params.forEach(p => {
+                activeParams[p.key] = p.val;
+            });
+        });
+
+        // --- Core Init ---
+        window.addEventListener('DOMContentLoaded', () => {
+            canvas = document.getElementById('morphCanvas');
+            ctx = canvas.getContext('2d');
+            
+            setupResponsiveCanvas();
+            renderParametersPanel();
+            hideLoader();
+            
+            // Event Listeners
+            window.addEventListener('resize', setupResponsiveCanvas);
+            document.getElementById('timeline').addEventListener('input', (e) => {
+                activeStage = parseFloat(e.target.value);
+                updateUIState();
+                requestAnimationFrame(drawScene);
+            });
+
+            document.getElementById('btn-play').addEventListener('click', togglePlayback);
+            document.getElementById('btn-split').addEventListener('click', toggleSplitMode);
+
+            // Upload Integration
+            const imgInput = document.getElementById('image-input');
+            const uploadBtn = document.getElementById('btn-upload');
+            const resetBtn = document.getElementById('btn-reset-default');
+
+            uploadBtn.addEventListener('click', () => imgInput.click());
+            imgInput.addEventListener('change', handleImageUpload);
+            resetBtn.addEventListener('click', resetToDefaultCastle);
+
+            // Download Art
+            document.getElementById('btn-download').addEventListener('click', downloadCanvas);
+
+            // Start Render Loop
+            lastFrameTime = performance.now();
+            requestAnimationFrame(gameLoop);
+        });
+
+        function setupResponsiveCanvas() {
+            const wrapper = document.getElementById('canvas-wrapper');
+            const dpr = window.devicePixelRatio || 1;
+            const rect = wrapper.getBoundingClientRect();
+            
+            // Provide sensible fallback dimensions if layout hasn't fully rendered
+            let wrapperWidth = rect.width || 400;
+            let wrapperHeight = rect.height || 500;
+
+            // Preserve 4:5 aspect ratio
+            let width = wrapperWidth;
+            let height = wrapperWidth * 1.25;
+
+            if (height > wrapperHeight) {
+                height = wrapperHeight;
+                width = wrapperHeight * 0.8;
+            }
+
+            // Ensure dimensions are positive, non-zero values
+            width = Math.max(10, width);
+            height = Math.max(12.5, height);
+
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            ctx.scale(dpr, dpr);
+            
+            // Regenerate noise if resolution changes
+            generateNoiseCache(width, height);
+            
+            requestAnimationFrame(drawScene);
+        }
+
+        function generateNoiseCache(w, h) {
+            const targetW = Math.max(1, Math.floor(w / 2));
+            const targetH = Math.max(1, Math.floor(h / 2));
+
+            const offscreenCanvas = document.createElement('canvas');
+            offscreenCanvas.width = targetW;
+            offscreenCanvas.height = targetH;
+            const offCtx = offscreenCanvas.getContext('2d');
+            
+            const imgData = offCtx.createImageData(targetW, targetH);
+            const data = imgData.data;
+
+            for (let i = 0; i < data.length; i += 4) {
+                const grain = Math.floor(Math.random() * 255);
+                data[i] = grain;
+                data[i+1] = grain;
+                data[i+2] = grain;
+                data[i+3] = 45; // base opacity
+            }
+            offCtx.putImageData(imgData, 0, 0);
+            noiseCache = offscreenCanvas;
+        }
+
+        // --- Custom Image Upload Processing ---
+        function handleImageUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    uploadedImg = img;
+                    preprocessUploadedLayers(img);
+                    document.getElementById('btn-reset-default').classList.remove('hidden');
+                    showToast("Photo processed into style propagation engine!");
+                    setupResponsiveCanvas();
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function preprocessUploadedLayers(img) {
+            const w = img.width;
+            const h = img.height;
+
+            // Create color channel tints matching genuine tactile Riso inks
+            risoTealCanvas = document.createElement('canvas');
+            risoTealCanvas.width = w; risoTealCanvas.height = h;
+            const tCtx = risoTealCanvas.getContext('2d');
+            tCtx.drawImage(img, 0, 0);
+            tCtx.globalCompositeOperation = 'source-atop';
+            tCtx.fillStyle = '#00b0b9'; // Electric Teal
+            tCtx.fillRect(0, 0, w, h);
+
+            risoPinkCanvas = document.createElement('canvas');
+            risoPinkCanvas.width = w; risoPinkCanvas.height = h;
+            const pCtx = risoPinkCanvas.getContext('2d');
+            pCtx.drawImage(img, 0, 0);
+            pCtx.globalCompositeOperation = 'source-atop';
+            pCtx.fillStyle = '#ff2a85'; // Fluorescent Pink
+            pCtx.fillRect(0, 0, w, h);
+
+            risoYellowCanvas = document.createElement('canvas');
+            risoYellowCanvas.width = w; risoYellowCanvas.height = h;
+            const yCtx = risoYellowCanvas.getContext('2d');
+            yCtx.drawImage(img, 0, 0);
+            yCtx.globalCompositeOperation = 'source-atop';
+            yCtx.fillStyle = '#ffc800'; // Solar Yellow
+            yCtx.fillRect(0, 0, w, h);
+
+            // Grayscale for shading multipliers and graphite styles
+            grayscaleCanvas = document.createElement('canvas');
+            grayscaleCanvas.width = w; grayscaleCanvas.height = h;
+            const gCtx = grayscaleCanvas.getContext('2d');
+            gCtx.filter = 'grayscale(100%) contrast(150%)';
+            gCtx.drawImage(img, 0, 0);
+        }
+
+        function resetToDefaultCastle() {
+            uploadedImg = null;
+            risoTealCanvas = null;
+            risoPinkCanvas = null;
+            risoYellowCanvas = null;
+            grayscaleCanvas = null;
+            document.getElementById('btn-reset-default').classList.add('hidden');
+            document.getElementById('image-input').value = "";
+            showToast("Restored original Himeji Castle geometry.");
+            setupResponsiveCanvas();
+        }
+
+        // --- Custom high-resolution exporter ---
+        function downloadCanvas() {
+            try {
+                const link = document.createElement('a');
+                const stageName = stylesConfig[Math.floor(activeStage)].name.toLowerCase().replace(/\s+/g, '-');
+                link.download = `castle-morphosis-${stageName}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                showToast("Stylistic capture saved successfully!");
+            } catch (err) {
+                showToast("Could not export. Trying clean rendering fallback...");
+                console.error(err);
+            }
+        }
+
+        // --- Toast system to bypass default browser alerts ---
+        function showToast(message) {
+            const exist = document.getElementById('app-toast');
+            if (exist) exist.remove();
+
+            const toast = document.createElement('div');
+            toast.id = 'app-toast';
+            toast.className = 'fixed bottom-6 right-6 z-[100] bg-slate-900 border border-emerald-500/30 text-emerald-400 px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-2 animate-bounce transition-all duration-300';
+            toast.innerHTML = `
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span class="text-xs font-semibold tracking-wide">${message}</span>
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+
+        function hideLoader() {
+            const loader = document.getElementById('canvas-loader');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 500);
+        }
+
+        // --- Render UI Panels ---
+        function renderParametersPanel() {
+            const container = document.getElementById('parameters-container');
+            container.innerHTML = '';
+
+            const currentStyleIdx = Math.floor(activeStage);
+            const stageMeta = stylesConfig[currentStyleIdx];
+
+            stageMeta.params.forEach(param => {
+                const paramValue = activeParams[param.key];
+                
+                const element = document.createElement('div');
+                element.className = 'space-y-1.5';
+                element.innerHTML = `
+                    <div class="flex justify-between text-xs font-semibold">
+                        <span class="text-slate-300">${param.label}</span>
+                        <span class="text-sky-400 font-mono" id="val-${param.key}">${paramValue.toFixed(1)}</span>
+                    </div>
+                    <input type="range" min="${param.min}" max="${param.max}" step="0.1" value="${paramValue}"
+                           class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500/50"
+                           oninput="updateParameter('${param.key}', parseFloat(this.value))">
+                `;
+                container.appendChild(element);
+            });
+        }
+
+        function updateParameter(key, value) {
+            activeParams[key] = value;
+            document.getElementById(`val-${key}`).innerText = value.toFixed(1);
+            requestAnimationFrame(drawScene);
+        }
+
+        function setTimeline(val) {
+            activeStage = val;
+            document.getElementById('timeline').value = val;
+            updateUIState();
+            requestAnimationFrame(drawScene);
+        }
+
+        function updateUIState() {
+            const currentIdx = Math.floor(activeStage);
+            const style = stylesConfig[currentIdx];
+            
+            document.getElementById('style-title').innerText = style.name;
+            document.getElementById('style-desc').innerText = style.desc;
+
+            const timelineEl = document.getElementById('timeline');
+            timelineEl.className = `w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer focus:outline-none transition-all accent-sky-500`;
+
+            const prevIndex = parseInt(document.getElementById('style-title').getAttribute('data-idx') || '-1');
+            if (prevIndex !== currentIdx) {
+                document.getElementById('style-title').setAttribute('data-idx', currentIdx);
+                renderParametersPanel();
+            }
+        }
+
+        function togglePlayback() {
+            isPlaying = !isPlaying;
+            const btn = document.getElementById('btn-play');
+            const iconPlay = document.getElementById('icon-play');
+            const iconPause = document.getElementById('icon-pause');
+            const playState = document.getElementById('txt-playstate');
+
+            if (isPlaying) {
+                iconPlay.classList.add('hidden');
+                iconPause.classList.remove('hidden');
+                playState.innerText = "Playing Loop";
+                btn.classList.replace('bg-sky-500', 'bg-emerald-500');
+                btn.classList.replace('text-slate-950', 'text-white');
+            } else {
+                iconPlay.classList.remove('hidden');
+                iconPause.classList.add('hidden');
+                playState.innerText = "Paused";
+                btn.classList.replace('bg-emerald-500', 'bg-sky-500');
+                btn.classList.replace('text-white', 'text-slate-950');
+            }
+            lastFrameTime = performance.now();
+        }
+
+        function toggleSplitMode() {
+            splitMode = !splitMode;
+            const dot = document.getElementById('split-toggle-dot');
+            const line = document.getElementById('split-line');
+            if (splitMode) {
+                dot.classList.replace('translate-x-1', 'translate-x-6');
+                dot.classList.replace('bg-slate-400', 'bg-sky-500');
+                line.classList.remove('hidden');
+            } else {
+                dot.classList.replace('translate-x-6', 'translate-x-1');
+                dot.classList.replace('bg-sky-500', 'bg-slate-400');
+                line.classList.add('hidden');
+            }
+            requestAnimationFrame(drawScene);
+        }
+
+        function resetDefaults() {
+            stylesConfig.forEach(st => {
+                st.params.forEach(p => {
+                    activeParams[p.key] = p.val;
+                });
+            });
+            renderParametersPanel();
+            requestAnimationFrame(drawScene);
+        }
+
+        // --- Core Animation Loop ---
+        function gameLoop(time) {
+            if (isPlaying) {
+                const delta = (time - lastFrameTime) / 1000;
+                lastFrameTime = time;
+
+                activeStage += playSpeed * delta;
+                if (activeStage > 3.0) activeStage = 0; 
+
+                document.getElementById('timeline').value = activeStage;
+                updateUIState();
+                drawScene();
+            }
+            animationFrameId = requestAnimationFrame(gameLoop);
+        }
+
+        // --- Core Render Pipeline ---
+        function drawScene() {
+            const w = canvas.width / (window.devicePixelRatio || 1);
+            const h = canvas.height / (window.devicePixelRatio || 1);
+
+            ctx.clearRect(0, 0, w, h);
+
+            if (splitMode) {
+                const leftStage = activeStage;
+                const rightStage = (Math.floor(activeStage) + 1) % 4;
+
+                // Render Left Half
+                ctx.save();
+                ctx.beginPath();
+                ctx.rect(0, 0, w / 2, h);
+                ctx.clip();
+                renderStageEngine(leftStage, w, h);
+                ctx.restore();
+
+                // Render Right Half
+                ctx.save();
+                ctx.beginPath();
+                ctx.rect(w / 2, 0, w / 2, h);
+                ctx.clip();
+                renderStageEngine(rightStage, w, h);
+                ctx.restore();
+
+                const splitLine = document.getElementById('split-line');
+                splitLine.style.left = `${(canvas.offsetLeft + (canvas.offsetWidth / 2))}px`;
+            } else {
+                renderStageEngine(activeStage, w, h);
+            }
+        }
+
+        function renderStageEngine(stage, w, h) {
+            const baseIdx = Math.floor(stage);
+            const nextIdx = (baseIdx + 1) % 4;
+            const blendRatio = stage - baseIdx;
+
+            if (blendRatio === 0) {
+                drawSpecificStyle(baseIdx, w, h);
+            } else {
+                drawBlendedStyles(baseIdx, nextIdx, blendRatio, w, h);
+            }
+        }
+
+        function drawSpecificStyle(idx, w, h) {
+            switch(idx) {
+                case 0:
+                    renderCrayon(w, h);
+                    break;
+                case 1:
+                    renderGraphite(w, h);
+                    break;
+                case 2:
+                    renderTranslucentGlass(w, h);
+                    break;
+                case 3:
+                    renderRisograph(w, h);
+                    break;
+            }
+        }
+
+        function drawBlendedStyles(idx1, idx2, progress, w, h) {
+            const canvasA = document.createElement('canvas');
+            canvasA.width = canvas.width;
+            canvasA.height = canvas.height;
+            const ctxA = canvasA.getContext('2d');
+            ctxA.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+            const canvasB = document.createElement('canvas');
+            canvasB.width = canvas.width;
+            canvasB.height = canvas.height;
+            const ctxB = canvasB.getContext('2d');
+            ctxB.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+            const mainCtx = ctx;
+            
+            ctx = ctxA;
+            drawSpecificStyle(idx1, w, h);
+
+            ctx = ctxB;
+            drawSpecificStyle(idx2, w, h);
+
+            ctx = mainCtx;
+            ctx.drawImage(canvasA, 0, 0, w, h);
+            ctx.save();
+            ctx.globalAlpha = progress;
+            ctx.drawImage(canvasB, 0, 0, w, h);
+            ctx.restore();
+        }
+
+        // Helper to cleanly fit uploaded photo onto canvas boundaries
+        function drawFittedPhoto(img, w, h) {
+            const imgRatio = img.width / img.height;
+            const canvasRatio = w / h;
+            let drawW, drawH;
+
+            if (imgRatio > canvasRatio) {
+                drawW = w;
+                drawH = w / imgRatio;
+            } else {
+                drawH = h;
+                drawW = h * imgRatio;
+            }
+
+            const x = (w - drawW) / 2;
+            const y = (h - drawH) / 2;
+            return { x, y, w: drawW, h: drawH };
+        }
+
+        // ==========================================
+        //  AESTHETIC STYLE 1: VIBRANT CRAYON
+        // ==========================================
+        function renderCrayon(w, h) {
+            const waxiness = activeParams['waxiness'];
+            const jitter = activeParams['strokeJitter'];
+            const grainOpacity = activeParams['paperGrain'];
+
+            ctx.fillStyle = '#eadecc'; 
+            ctx.fillRect(0, 0, w, h);
+
+            if (uploadedImg) {
+                ctx.save();
+                const pos = drawFittedPhoto(uploadedImg, w, h);
+                ctx.filter = `saturate(2.2) contrast(1.15) brightness(0.95)`;
+                ctx.drawImage(uploadedImg, pos.x, pos.y, pos.w, pos.h);
+                ctx.restore();
+            } else {
+                const skyGrad = ctx.createLinearGradient(0, 0, 0, h);
+                skyGrad.addColorStop(0, '#10214c');
+                skyGrad.addColorStop(0.5, '#1e3875');
+                skyGrad.addColorStop(1, '#3b62b0');
+                ctx.fillStyle = skyGrad;
+                ctx.fillRect(0, 0, w, h);
+
+                drawCrayonTexturedStrokes(w, h, waxiness);
+
+                const m = castleGeometry.moon;
+                const mx = m.cx * w;
+                const my = m.cy * h;
+                const mr = m.r * w;
+
+                ctx.save();
+                ctx.shadowBlur = 25;
+                ctx.shadowColor = '#fff5cf';
+                ctx.fillStyle = '#ffebd3';
+                ctx.beginPath();
+                ctx.arc(mx, my, mr, 0.2 * Math.PI, 1.8 * Math.PI);
+                ctx.arc(mx + (m.shadowOffset * w), my, mr, 1.9 * Math.PI, 0.1 * Math.PI, true);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+
+                castleGeometry.mountains.forEach(mt => {
+                    ctx.fillStyle = '#17203a';
+                    drawJitteryPath(mt.pts, w, h, jitter, true);
+                });
+
+                castleGeometry.castle.forEach(elem => {
+                    let color = '#ffffff';
+                    if (elem.style === 'roof') color = '#273352';
+                    else if (elem.style === 'base') color = '#404554';
+                    else if (elem.style === 'window') color = '#1a1f2c';
+
+                    ctx.fillStyle = color;
+                    ctx.strokeStyle = '#1b1b1c';
+                    ctx.lineWidth = 1.5 + Math.random() * 0.8;
+                    drawJitteryPolygon(elem.pts, w, h, jitter, true, true);
+                });
+
+                castleGeometry.trees.forEach(tree => {
+                    ctx.fillStyle = tree.color;
+                    ctx.strokeStyle = '#101c18';
+                    ctx.lineWidth = 2;
+                    
+                    const tx = tree.cx * w;
+                    const ty = tree.cy * h;
+                    const tr = tree.r * w;
+
+                    ctx.beginPath();
+                    for (let angle = 0; angle < Math.PI * 2; angle += 0.2) {
+                        const radiusOffset = (Math.random() - 0.5) * jitter * 2;
+                        const cx = tx + Math.cos(angle) * (tr + radiusOffset);
+                        const cy = ty + Math.sin(angle) * (tr + radiusOffset);
+                        if (angle === 0) ctx.moveTo(cx, cy);
+                        else ctx.lineTo(cx, cy);
+                    }
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.stroke();
+                });
+            }
+
+            applyPaperGrainOverlay(w, h, grainOpacity);
+        }
+
+        // ==========================================
+        //  AESTHETIC STYLE 2: GRAPHITE PENCIL
+        // ==========================================
+        function renderGraphite(w, h) {
+            const boiling = activeParams['lineBoiling'];
+            const hatchDensity = activeParams['hatchingDensity'];
+            const weight = activeParams['lineWeight'];
+
+            ctx.fillStyle = '#f5f4ef';
+            ctx.fillRect(0, 0, w, h);
+
+            applyPaperGrainOverlay(w, h, 0.25);
+            const activeJitter = (isPlaying) ? Math.random() * boiling : boiling / 2;
+
+            if (uploadedImg) {
+                ctx.save();
+                const pos = drawFittedPhoto(uploadedImg, w, h);
+                ctx.filter = `grayscale(100%) contrast(190%) brightness(105%)`;
+                ctx.globalAlpha = 0.85;
+                ctx.drawImage(uploadedImg, pos.x, pos.y, pos.w, pos.h);
+                ctx.restore();
+
+                // Draw charcoal sketchy overlay boundaries
+                ctx.strokeStyle = 'rgba(24, 24, 27, 0.4)';
+                ctx.lineWidth = weight;
+                ctx.strokeRect(pos.x + activeJitter, pos.y - activeJitter, pos.w, pos.h);
+            } else {
+                ctx.strokeStyle = '#71717a';
+                ctx.lineWidth = weight * 0.5;
+                castleGeometry.mountains.forEach(mt => {
+                    drawJitteryPath(mt.pts, w, h, activeJitter, false);
+                });
+
+                const m = castleGeometry.moon;
+                const mx = m.cx * w;
+                const my = m.cy * h;
+                const mr = m.r * w;
+                ctx.strokeStyle = '#3f3f46';
+                ctx.lineWidth = weight;
+                ctx.beginPath();
+                ctx.arc(mx, my, mr, 0.2 * Math.PI, 1.8 * Math.PI);
+                ctx.arc(mx + (m.shadowOffset * w), my, mr, 1.9 * Math.PI, 0.1 * Math.PI, true);
+                ctx.closePath();
+                ctx.stroke();
+
+                castleGeometry.castle.forEach(elem => {
+                    ctx.strokeStyle = '#27272a';
+                    ctx.lineWidth = elem.style === 'roof' ? weight * 1.5 : weight;
+                    drawJitteryPolygon(elem.pts, w, h, activeJitter, false, true);
+
+                    if (elem.style === 'roof' || elem.style === 'base') {
+                        applyCrossHatch(elem.pts, w, h, hatchDensity, activeJitter);
+                    }
+                });
+
+                castleGeometry.trees.forEach(tree => {
+                    const tx = tree.cx * w;
+                    const ty = tree.cy * h;
+                    const tr = tree.r * w;
+
+                    ctx.strokeStyle = '#18181b';
+                    ctx.lineWidth = weight * 0.8;
+                    
+                    ctx.beginPath();
+                    for (let r = 5; r < tr; r += 3) {
+                        let angle = 0;
+                        while (angle < Math.PI * 2) {
+                            const rJitter = (Math.random() - 0.5) * activeJitter * 1.5;
+                            const px = tx + Math.cos(angle) * (r + rJitter);
+                            const py = ty + Math.sin(angle) * (r + rJitter);
+                            if (angle === 0) ctx.moveTo(px, py);
+                            else ctx.lineTo(px, py);
+                            angle += 0.3;
+                        }
+                    }
+                    ctx.stroke();
+                });
+            }
+        }
+
+        // ==========================================
+        //  AESTHETIC STYLE 3: 3D TRANSLUCENT GLASS
+        // ==========================================
+        function renderTranslucentGlass(w, h) {
+            const index = activeParams['refraction'];
+            const glow = activeParams['glowIntensity'];
+            const caustics = activeParams['caustics'];
+
+            const bgGrad = ctx.createRadialGradient(w/2, h/2, 10, w/2, h/2, w);
+            bgGrad.addColorStop(0, '#0d1527');
+            bgGrad.addColorStop(0.6, '#05070e');
+            bgGrad.addColorStop(1, '#020306');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, w, h);
+
+            drawStudioCaustics(w, h, caustics);
+
+            if (uploadedImg) {
+                ctx.save();
+                const pos = drawFittedPhoto(uploadedImg, w, h);
+                ctx.filter = `blur(1.5px) saturate(0.85) brightness(0.9)`;
+                ctx.globalAlpha = 0.55;
+                ctx.drawImage(uploadedImg, pos.x, pos.y, pos.w, pos.h);
+                
+                // Overlay clean glass panel refraction lines
+                ctx.restore();
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+                ctx.lineWidth = 0.5;
+                ctx.strokeRect(pos.x, pos.y, pos.w, pos.h);
+                
+                // Refractive diagonal shards
+                ctx.beginPath();
+                ctx.moveTo(pos.x, pos.y);
+                ctx.lineTo(pos.x + pos.w * 0.5, pos.y + pos.h);
+                ctx.moveTo(pos.x + pos.w * 0.3, pos.y);
+                ctx.lineTo(pos.x + pos.w, pos.y + pos.h * 0.8);
+                ctx.stroke();
+            } else {
+                const m = castleGeometry.moon;
+                const mx = m.cx * w;
+                const my = m.cy * h;
+                const mr = m.r * w;
+
+                const moonGlow = ctx.createRadialGradient(mx, my, 0, mx, my, mr * 3);
+                moonGlow.addColorStop(0, `rgba(224, 242, 254, ${0.4 * caustics})`);
+                moonGlow.addColorStop(0.5, `rgba(14, 165, 233, ${0.1 * caustics})`);
+                moonGlow.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = moonGlow;
+                ctx.beginPath();
+                ctx.arc(mx, my, mr * 3, 0, Math.PI*2);
+                ctx.fill();
+
+                ctx.save();
+                ctx.shadowBlur = glow;
+                ctx.shadowColor = 'rgba(14, 165, 233, 0.5)';
+                ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+                ctx.lineWidth = 1;
+                
+                const glassMoonGrad = ctx.createLinearGradient(mx - mr, my, mx + mr, my);
+                glassMoonGrad.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
+                glassMoonGrad.addColorStop(0.5, 'rgba(186, 230, 253, 0.2)');
+                glassMoonGrad.addColorStop(1, 'rgba(56, 189, 248, 0.6)');
+                ctx.fillStyle = glassMoonGrad;
+
+                ctx.beginPath();
+                ctx.arc(mx, my, mr, 0.2 * Math.PI, 1.8 * Math.PI);
+                ctx.arc(mx + (m.shadowOffset * w), my, mr, 1.9 * Math.PI, 0.1 * Math.PI, true);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+                ctx.restore();
+
+                castleGeometry.mountains.forEach(mt => {
+                    const hillGrad = ctx.createLinearGradient(0, mt.pts[0][1]*h, 0, h);
+                    hillGrad.addColorStop(0, 'rgba(30, 41, 59, 0.2)');
+                    hillGrad.addColorStop(1, 'rgba(15, 23, 42, 0.8)');
+                    ctx.fillStyle = hillGrad;
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+                    ctx.lineWidth = 1;
+                    drawJitteryPath(mt.pts, w, h, 0, true);
+                });
+
+                castleGeometry.castle.forEach(elem => {
+                    ctx.save();
+                    ctx.shadowBlur = glow / 2;
+                    ctx.shadowColor = 'rgba(56, 189, 248, 0.3)';
+
+                    let fillGrad;
+                    const bounds = getPolygonBounds(elem.pts, w, h);
+
+                    if (elem.style === 'roof') {
+                        fillGrad = ctx.createLinearGradient(bounds.x, bounds.y, bounds.x, bounds.y + bounds.h);
+                        fillGrad.addColorStop(0, 'rgba(14, 116, 144, 0.55)'); 
+                        fillGrad.addColorStop(1, 'rgba(8, 47, 73, 0.85)'); 
+                    } else if (elem.style === 'base') {
+                        fillGrad = ctx.createLinearGradient(bounds.x, bounds.y, bounds.x, bounds.y + bounds.h);
+                        fillGrad.addColorStop(0, 'rgba(30, 41, 59, 0.7)');
+                        fillGrad.addColorStop(1, 'rgba(15, 23, 42, 0.95)');
+                    } else if (elem.style === 'window') {
+                        fillGrad = 'rgba(243, 244, 246, 0.9)'; 
+                    } else {
+                        fillGrad = ctx.createLinearGradient(bounds.x, bounds.y, bounds.x + bounds.w, bounds.y);
+                        fillGrad.addColorStop(0, `rgba(255, 255, 255, ${0.15 * index})`);
+                        fillGrad.addColorStop(0.5, `rgba(224, 242, 254, ${0.35 * index})`);
+                        fillGrad.addColorStop(1, `rgba(186, 230, 253, ${0.15 * index})`);
+                    }
+
+                    ctx.fillStyle = fillGrad;
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                    ctx.lineWidth = 0.5;
+
+                    drawJitteryPolygon(elem.pts, w, h, 0, true, true);
+
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(bounds.x + 2, bounds.y + 2);
+                    ctx.lineTo(bounds.x + bounds.w - 2, bounds.y + 2);
+                    ctx.stroke();
+
+                    ctx.restore();
+                });
+
+                castleGeometry.trees.forEach(tree => {
+                    const tx = tree.cx * w;
+                    const ty = tree.cy * h;
+                    const tr = tree.r * w;
+
+                    const glassGrad = ctx.createRadialGradient(tx - tr/3, ty - tr/3, 1, tx, ty, tr);
+                    glassGrad.addColorStop(0, 'rgba(20, 184, 166, 0.45)');
+                    glassGrad.addColorStop(0.8, 'rgba(13, 148, 136, 0.15)');
+                    glassGrad.addColorStop(1, 'rgba(19, 78, 74, 0.7)');
+
+                    ctx.save();
+                    ctx.fillStyle = glassGrad;
+                    ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+                    ctx.beginPath();
+                    ctx.arc(tx, ty, tr, 0, Math.PI*2);
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.restore();
+                });
+            }
+        }
+
+        // ==========================================
+        //  AESTHETIC STYLE 4: TACTILE RISOGRAPH
+        // ==========================================
+        function renderRisograph(w, h) {
+            const offset = activeParams['registrationOffset'];
+            const dotSize = activeParams['halftoneSize'];
+            const bleed = activeParams['inkBleed'];
+
+            ctx.fillStyle = '#f8f4eb';
+            ctx.fillRect(0, 0, w, h);
+
+            const colorPink = 'rgba(255, 42, 133, 0.82)';
+            const colorTeal = 'rgba(0, 176, 185, 0.82)';
+            const colorYellow = 'rgba(255, 200, 0, 0.82)';
+
+            ctx.save();
+            ctx.globalCompositeOperation = 'multiply';
+
+            if (uploadedImg && risoTealCanvas) {
+                const pos = drawFittedPhoto(uploadedImg, w, h);
+
+                // Draw Yellow screen layer (translated right)
+                ctx.drawImage(risoYellowCanvas, pos.x - offset, pos.y + offset, pos.w, pos.h);
+
+                // Draw Cyan screen layer (translated left)
+                ctx.drawImage(risoTealCanvas, pos.x + offset, pos.y - offset, pos.w, pos.h);
+
+                // Draw Magenta screen layer (centered)
+                ctx.drawImage(risoPinkCanvas, pos.x, pos.y, pos.w, pos.h);
+            } else {
+                ctx.fillStyle = colorYellow;
+                const m = castleGeometry.moon;
+                const mx = m.cx * w;
+                const my = m.cy * h;
+                const mr = m.r * w;
+                ctx.beginPath();
+                ctx.arc(mx - offset, my + offset, mr, 0, Math.PI*2);
+                ctx.fill();
+
+                ctx.fillStyle = colorTeal;
+                castleGeometry.mountains.forEach(mt => {
+                    ctx.save();
+                    ctx.translate(offset, -offset);
+                    drawJitteryPath(mt.pts, w, h, bleed * 0.5, true);
+                    ctx.restore();
+                });
+
+                castleGeometry.castle.forEach(elem => {
+                    if (elem.style === 'roof' || elem.style === 'base') {
+                        ctx.save();
+                        ctx.translate(offset, -offset);
+                        drawJitteryPolygon(elem.pts, w, h, bleed * 0.4, true, false);
+                        ctx.restore();
+                    }
+                });
+
+                ctx.fillStyle = colorPink;
+                castleGeometry.castle.forEach(elem => {
+                    if (elem.style === 'wall' || elem.style === 'window') {
+                        ctx.save();
+                        ctx.translate(-offset, offset);
+                        drawJitteryPolygon(elem.pts, w, h, bleed * 0.4, true, false);
+                        ctx.restore();
+                    }
+                });
+
+                castleGeometry.trees.forEach(tree => {
+                    ctx.fillStyle = colorTeal;
+                    ctx.beginPath();
+                    ctx.arc((tree.cx * w) - offset, (tree.cy * h), tree.r * w, 0, Math.PI*2);
+                    ctx.fill();
+
+                    ctx.fillStyle = colorPink;
+                    ctx.beginPath();
+                    ctx.arc((tree.cx * w) + offset, (tree.cy * h) + offset, tree.r * w * 0.9, 0, Math.PI*2);
+                    ctx.fill();
+                });
+            }
+
+            ctx.restore(); 
+            applyRisographHalftones(w, h, dotSize);
+        }
+
+        // ==========================================
+        //  ENGINE HELPER FUNCTIONS
+        // ==========================================
+
+        function drawJitteryPath(points, w, h, jitter, fill = false) {
+            ctx.beginPath();
+            points.forEach((pt, idx) => {
+                const jx = (Math.random() - 0.5) * jitter;
+                const jy = (Math.random() - 0.5) * jitter;
+                const px = pt[0] * w + jx;
+                const py = pt[1] * h + jy;
+
+                if (idx === 0) ctx.moveTo(px, py);
+                else ctx.lineTo(px, py);
+            });
+            if (fill) ctx.fill();
+            else ctx.stroke();
+        }
+
+        function drawJitteryPolygon(points, w, h, jitter, fill = true, stroke = true) {
+            ctx.beginPath();
+            points.forEach((pt, idx) => {
+                const jx = (Math.random() - 0.5) * jitter;
+                const jy = (Math.random() - 0.5) * jitter;
+                const px = pt[0] * w + jx;
+                const py = pt[1] * h + jy;
+
+                if (idx === 0) ctx.moveTo(px, py);
+                else ctx.lineTo(px, py);
+            });
+            ctx.closePath();
+            if (fill) ctx.fill();
+            if (stroke) ctx.stroke();
+        }
+
+        function drawCrayonTexturedStrokes(w, h, waxiness) {
+            ctx.save();
+            ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+            ctx.lineWidth = 1.5;
+            for (let i = 0; i < w + h; i += 15 - waxiness) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i - h, h);
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        function applyPaperGrainOverlay(w, h, opacity) {
+            if (!noiseCache) return;
+            ctx.save();
+            ctx.globalAlpha = opacity;
+            ctx.globalCompositeOperation = 'multiply';
+            ctx.drawImage(noiseCache, 0, 0, w, h);
+            ctx.restore();
+        }
+
+        function applyCrossHatch(points, w, h, density, jitter) {
+            const bounds = getPolygonBounds(points, w, h);
+            ctx.save();
+            ctx.strokeStyle = 'rgba(39, 39, 42, 0.4)';
+            ctx.lineWidth = 0.8;
+
+            ctx.beginPath();
+            points.forEach((pt, idx) => {
+                const px = pt[0] * w;
+                const py = pt[1] * h;
+                if (idx === 0) ctx.moveTo(px, py);
+                else ctx.lineTo(px, py);
+            });
+            ctx.closePath();
+            ctx.clip();
+
+            const step = Math.max(3, 40 - density);
+            for (let i = bounds.x - bounds.h; i < bounds.x + bounds.w; i += step) {
+                ctx.beginPath();
+                const jx = (Math.random() - 0.5) * jitter;
+                ctx.moveTo(i + jx, bounds.y);
+                ctx.lineTo(i + bounds.h + jx, bounds.y + bounds.h);
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        function drawStudioCaustics(w, h, intensity) {
+            ctx.save();
+            ctx.globalCompositeOperation = 'screen';
+            const grad = ctx.createRadialGradient(w * 0.45, h * 0.55, 2, w * 0.5, h * 0.55, w * 0.6);
+            grad.addColorStop(0, `rgba(56, 189, 248, ${0.12 * intensity})`);
+            grad.addColorStop(0.4, `rgba(13, 148, 136, ${0.05 * intensity})`);
+            grad.addColorStop(1, 'rgba(0,0,0,0)');
+            
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, w, h);
+            ctx.restore();
+        }
+
+        function applyRisographHalftones(w, h, size) {
+            ctx.save();
+            ctx.globalCompositeOperation = 'source-atop'; 
+            ctx.fillStyle = '#000000';
+            
+            const buffer = ctx.createImageData(w, h);
+            const data = buffer.data;
+
+            for (let y = 0; y < h; y += size) {
+                for (let x = 0; x < w; x += size) {
+                    ctx.fillStyle = 'rgba(0,0,0,0.06)';
+                    ctx.beginPath();
+                    ctx.arc(x, y, size * 0.35, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            ctx.restore();
+        }
+
+        function getPolygonBounds(points, w, h) {
+            let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+            points.forEach(pt => {
+                const px = pt[0] * w;
+                const py = pt[1] * h;
+                if (px < minX) minX = px;
+                if (px > maxX) maxX = px;
+                if (py < minY) minY = py;
+                if (py > maxY) maxY = py;
+            });
+            return {
+                x: minX,
+                y: minY,
+                w: maxX - minX,
+                h: maxY - minY
+            };
+        }
+    </script>
+</body>
+</html>

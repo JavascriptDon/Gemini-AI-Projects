@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Baseball | Premium Baseball Collection</title>
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA////AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREQAAAAAAEREREQAAAAEREREREAAAEhEREREhAAARIREREhEAARESEREhERABEREhEhEREAERESESEREQARERIRIRERABEREhEhEREAARESESEREAABESEREhEQAAASERERIQAAAAEREREQAAAAAAEREAAAD//wAA/D8AAPAPAADgBwAAwAMAAMADAACAAQAAgAEAAIABAACAAQAAgAEAAMADAADAAwAA4AcAAPAPAAD8PwAA" rel="icon" type="image/x-icon">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js (3D rendering) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0c0b0e;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .luxury-font {
+            font-family: 'Cinzel', serif;
+        }
+        /* Custom scrollbar to keep layout premium */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0c0b0e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2b2730;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #473e50;
+        }
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(18, 16, 22, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        /* Smooth page snap layout styling */
+        .scroll-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        /* Sound waves animation */
+        .sound-wave-bar {
+            animation: bounce 0.8s ease-in-out infinite alternate;
+        }
+        @keyframes bounce {
+            0% { transform: scaleY(0.3); }
+            100% { transform: scaleY(1); }
+        }
+    </style>
+</head>
+<body class="relative selection:bg-purple-900 selection:text-white">
+
+    <!-- Ambient Glow Backdrops -->
+    <div id="ambient-glow" class="fixed inset-0 pointer-events-none transition-all duration-1000 ease-out z-0 opacity-40" 
+         style="background: radial-gradient(circle at 30% 50%, #4a154b 0%, transparent 60%);">
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-center transition-all duration-300">
+        <a href="#" class="luxury-font text-xl md:text-2xl tracking-[0.25em] font-bold text-white transition-colors duration-300 hover:text-purple-300">
+            Premium_Baseball
+        </a>
+        
+        <!-- Quick Stats & Actions -->
+        <div class="flex items-center gap-6">
+            <!-- Audio Toggle Synthesizer -->
+            <button id="btn-sound" class="text-white hover:text-purple-300 transition-colors flex items-center gap-2 group py-2 px-3 rounded-full border border-white/10 hover:border-purple-500/30 bg-black/20" title="Toggle Interactive Sound Effects">
+                <div class="flex items-end gap-0.5 h-3 w-4 overflow-hidden">
+                    <span class="sound-wave-bar block w-0.5 h-full bg-white origin-bottom" style="animation-delay: 0.1s;"></span>
+                    <span class="sound-wave-bar block w-0.5 h-full bg-white origin-bottom" style="animation-delay: 0.3s;"></span>
+                    <span class="sound-wave-bar block w-0.5 h-full bg-white origin-bottom" style="animation-delay: 0.2s;"></span>
+                </div>
+                <span class="text-[10px] tracking-[0.2em] font-semibold uppercase hidden sm:inline">Sound On</span>
+            </button>
+
+            <!-- Light/Dark Customizer Trigger -->
+            <button id="btn-theme-customizer" class="text-white hover:text-purple-300 transition-colors py-2 px-3 rounded-full border border-white/10 hover:border-purple-500/30 bg-black/20 flex items-center gap-2">
+                <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+                <span class="text-[10px] tracking-[0.2em] font-semibold uppercase hidden sm:inline">Design Studio</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Side Indicators / Navigation dots -->
+    <div class="fixed right-6 md:right-12 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-6 items-center">
+        <div class="h-16 w-[1px] bg-white/10"></div>
+        <div class="flex flex-col gap-4" id="nav-dots">
+            <button data-index="0" class="nav-dot w-2 h-2 rounded-full bg-white border border-white transition-all duration-300 scale-125" title="Classic 108"></button>
+            <button data-index="1" class="nav-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/60 transition-all duration-300" title="Vintage Hide"></button>
+            <button data-index="2" class="nav-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/60 transition-all duration-300" title="Aurum Elite"></button>
+            <button data-index="3" class="nav-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/60 transition-all duration-300" title="Lumina Neon"></button>
+        </div>
+        <div class="h-16 w-[1px] bg-white/10"></div>
+    </div>
+
+    <!-- MAIN 3D DISPLAY CONTAINER (Left side, fixed viewport position) -->
+    <div class="fixed left-0 top-0 w-full lg:w-1/2 h-[50vh] lg:h-screen pointer-events-none z-20 transition-all duration-500">
+        <div id="canvas-container" class="w-full h-full pointer-events-auto cursor-grab active:cursor-grabbing">
+            <!-- Three.js Canvas will inject here -->
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT FLOW (Right side on desktop, stacked on mobile) -->
+    <main class="relative z-10 w-full min-h-screen">
+        
+        <!-- SECTION 1: THE CLASSIC 108 -->
+        <section id="section-classic" class="scroll-section w-full px-6 md:px-12 lg:pl-[50%] flex items-center" data-ball="classic">
+            <div class="max-w-xl w-full py-24 lg:py-0">
+                <span class="text-xs tracking-[0.4em] text-purple-400 font-semibold uppercase block mb-4 animate-fade">Collection I: Traditionalist</span>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-wider leading-tight mb-6">
+                    THE CLASSIC <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">108 STITCH</span>
+                </h1>
+                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8 max-w-lg font-light">
+                    Meticulously crafted with selected full-grain premium cowhide leather. Bound by precisely one-hundred and eight double-needle crimson stitches to ensure aerodynamic supremacy and flawless weight distribution.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 items-center mb-10">
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                        <span class="text-[11px] tracking-wider uppercase text-gray-300">Standard Seams</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
+                        <span class="text-[11px] tracking-wider uppercase text-gray-300">Weight: 5.12 oz</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <button class="btn-open-customizer group relative overflow-hidden bg-white text-black font-semibold tracking-[0.2em] uppercase text-xs px-8 py-4 rounded-full transition-transform hover:scale-105 active:scale-95 duration-300">
+                        <span class="relative z-10">Start customizing</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-purple-200 to-white -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                    </button>
+                    <button class="scroll-next-btn flex items-center gap-2 group text-white/50 hover:text-white transition-colors duration-300">
+                        <span class="text-xs tracking-wider uppercase">Scroll to explore</span>
+                        <i class="fa-solid fa-arrow-down text-xs group-hover:translate-y-1 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: THE VINTAGE HIDE -->
+        <section id="section-vintage" class="scroll-section w-full px-6 md:px-12 lg:pl-[50%] flex items-center" data-ball="vintage">
+            <div class="max-w-xl w-full py-24 lg:py-0">
+                <span class="text-xs tracking-[0.4em] text-amber-500 font-semibold uppercase block mb-4">Collection II: Heritage</span>
+                <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-wider leading-tight mb-6">
+                    THE VINTAGE <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-800">HEIRLOOM</span>
+                </h2>
+                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8 max-w-lg font-light">
+                    A tribute to the origins of the game. Hand-polished, distressed chestnut mahogany leather treated with natural beeswax oils, held securely by heavy hemp-cord flat stitching to offer a rustic texture and rich sensory grip.
+                </p>
+
+                <div class="flex flex-wrap gap-4 items-center mb-10">
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                        <span class="text-[11px] tracking-wider uppercase text-gray-300">Distressed Waxed Leather</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
+                        <span class="text-[11px] tracking-wider uppercase text-gray-300">Circa 1890 Stitch Pattern</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <button class="btn-open-customizer group relative overflow-hidden bg-amber-600 text-white font-semibold tracking-[0.2em] uppercase text-xs px-8 py-4 rounded-full transition-all hover:bg-amber-500 hover:scale-105 active:scale-95 duration-300">
+                        Start customizing
+                    </button>
+                    <button class="scroll-next-btn flex items-center gap-2 group text-white/50 hover:text-white transition-colors duration-300">
+                        <span class="text-xs tracking-wider uppercase">Next design</span>
+                        <i class="fa-solid fa-arrow-down text-xs group-hover:translate-y-1 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: THE AURUM ELITE -->
+        <section id="section-aurum" class="scroll-section w-full px-6 md:px-12 lg:pl-[50%] flex items-center" data-ball="aurum">
+            <div class="max-w-xl w-full py-24 lg:py-0">
+                <span class="text-xs tracking-[0.4em] text-yellow-400 font-semibold uppercase block mb-4">Collection III: Prestige</span>
+                <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-wider leading-tight mb-6">
+                    THE AURUM <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-500 to-amber-600">PREMIER</span>
+                </h2>
+                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8 max-w-lg font-light">
+                    A masterclass in luxury design. Polished gold electroplate exterior shell matched elegantly with high-gloss hand-carved obsidian seam structures. An ultimate display piece celebrating record achievements and historic milestones.
+                </p>
+
+                <div class="flex flex-wrap gap-4 items-center mb-10">
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
+                        <span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
+                        <span class="text-[11px] tracking-wider uppercase text-gray-300">24K Gold Coating</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
+                        <span class="text-[11px] tracking-wider uppercase text-gray-300">Collector's Case Edition</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <button class="btn-open-customizer group relative overflow-hidden bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-bold tracking-[0.2em] uppercase text-xs px-8 py-4 rounded-full transition-transform hover:scale-105 active:scale-95 duration-300">
+                        Start customizing
+                    </button>
+                    <button class="scroll-next-btn flex items-center gap-2 group text-white/50 hover:text-white transition-colors duration-300">
+                        <span class="text-xs tracking-wider uppercase">Next design</span>
+                        <i class="fa-solid fa-arrow-down text-xs group-hover:translate-y-1 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: THE LUMINA NEON -->
+        <section id="section-lumina" class="scroll-section w-full px-6 md:px-12 lg:pl-[50%] flex items-center" data-ball="lumina">
+            <div class="max-w-xl w-full py-24 lg:py-0">
+                <span class="text-xs tracking-[0.4em] text-cyan-400 font-semibold uppercase block mb-4">Collection IV: Cybernetic</span>
+                <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-wider leading-tight mb-6">
+                    THE LUMINA <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-500">NIGHT-BALL</span>
+                </h2>
+                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8 max-w-lg font-light">
+                    Engineered for evening play. Composed of soft-grip composite polymer shell, with integrated light-reactive neon cyber-channels. Under ultra-violet light, the stitches glow intensely, defining dynamic velocity vectors mid-flight.
+                </p>
+
+                <div class="flex flex-wrap gap-4 items-center mb-10">
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                        <span class="text-[11px] tracking-wider uppercase text-gray-300">Luminescent seam guides</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
+                        <span class="text-[11px] tracking-wider uppercase text-gray-300">Composite Soft Tact</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <button class="btn-open-customizer group relative overflow-hidden bg-cyan-500 text-black font-bold tracking-[0.2em] uppercase text-xs px-8 py-4 rounded-full transition-transform hover:scale-105 active:scale-95 duration-300">
+                        Start customizing
+                    </button>
+                    <button id="scroll-top-btn" class="flex items-center gap-2 group text-white/50 hover:text-white transition-colors duration-300">
+                        <span class="text-xs tracking-wider uppercase">Back to Top</span>
+                        <i class="fa-solid fa-arrow-up text-xs group-hover:-translate-y-1 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER / CREDIT BAR -->
+    <footer class="fixed bottom-0 left-0 w-full z-40 px-6 py-6 md:px-12 flex justify-between items-center pointer-events-none text-xs text-white/30">
+        <div class="hidden md:block">Handcrafted in Limited Batches.</div>
+        <div class="pointer-events-auto flex items-center gap-4">
+            <span class="hidden md:inline">Premium-Baseball © 2026</span>
+            <a href="https://github.com/JavascriptDon/3D-Baseball-Showcase" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-github text-base"></i></a>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE DESIGN STUDIO OVERLAY (Customizer Drawer) -->
+    <div id="customizer-drawer" class="fixed inset-y-0 right-0 w-full md:w-[450px] z-50 glass-panel translate-x-full transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1) p-8 flex flex-col justify-between shadow-2xl overflow-y-auto">
+        <div>
+            <!-- Close header -->
+            <div class="flex justify-between items-center mb-10 border-b border-white/15 pb-6">
+                <div>
+                    <h3 class="luxury-font text-lg font-bold tracking-widest text-white">DESIGN STUDIO</h3>
+                    <p class="text-[10px] uppercase tracking-wider text-gray-400 mt-1">Bespoke Ball Customization</p>
+                </div>
+                <button id="btn-close-customizer" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 hover:border-white/30 transition-colors">
+                    <i class="fa-solid fa-xmark text-white text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Customizer options -->
+            <div class="space-y-8">
+                <!-- Base Color -->
+                <div>
+                    <label class="block text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-3">Base Leather Coating</label>
+                    <div class="grid grid-cols-5 gap-3">
+                        <button class="color-preset-btn w-10 h-10 rounded-full border-2 border-white bg-[#fcfbf7] transition-all" data-color="#fcfbf7" data-roughness="0.5" data-metalness="0.1" title="Classic White"></button>
+                        <button class="color-preset-btn w-10 h-10 rounded-full border border-white/10 bg-[#5c4033] transition-all" data-color="#5c4033" data-roughness="0.8" data-metalness="0.0" title="Mahogany Vintage"></button>
+                        <button class="color-preset-btn w-10 h-10 rounded-full border border-white/10 bg-[#d4af37] transition-all" data-color="#d4af37" data-roughness="0.1" data-metalness="0.9" title="Solid Gold"></button>
+                        <button class="color-preset-btn w-10 h-10 rounded-full border border-white/10 bg-[#121217] transition-all" data-color="#121217" data-roughness="0.6" data-metalness="0.4" title="Midnight Carbon"></button>
+                        <button class="color-preset-btn w-10 h-10 rounded-full border border-white/10 bg-[#2b3a42] transition-all" data-color="#2b3a42" data-roughness="0.4" data-metalness="0.2" title="Steel Blue"></button>
+                    </div>
+                </div>
+
+                <!-- Custom Hex/Palette Color -->
+                <div>
+                    <label class="block text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-2">Custom Shell Color</label>
+                    <div class="flex gap-4">
+                        <input type="color" id="base-color-input" class="w-12 h-10 bg-transparent rounded border border-white/10 p-0.5 cursor-pointer" value="#fcfbf7">
+                        <input type="text" id="base-color-text" class="flex-1 bg-white/5 border border-white/10 rounded px-3 text-sm text-gray-300 font-mono focus:outline-none focus:border-purple-500 transition-colors" value="#fcfbf7">
+                    </div>
+                </div>
+
+                <!-- Seam Thread Color -->
+                <div>
+                    <label class="block text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-3">Seam Stitch Thread</label>
+                    <div class="grid grid-cols-5 gap-3">
+                        <button class="stitch-color-btn w-10 h-10 rounded-full border-2 border-white bg-[#cc1a1a] transition-all" data-color="#cc1a1a" data-emissive="0.0" title="Crimson"></button>
+                        <button class="stitch-color-btn w-10 h-10 rounded-full border border-white/10 bg-[#dfd5c6] transition-all" data-color="#dfd5c6" data-emissive="0.0" title="Hemp Ivory"></button>
+                        <button class="stitch-color-btn w-10 h-10 rounded-full border border-white/10 bg-[#1a1a1a] transition-all" data-color="#1a1a1a" data-emissive="0.0" title="Obsidian"></button>
+                        <button class="stitch-color-btn w-10 h-10 rounded-full border border-white/10 bg-[#00ffcc] transition-all" data-color="#00ffcc" data-emissive="1.5" title="Cyber Cyan"></button>
+                        <button class="stitch-color-btn w-10 h-10 rounded-full border border-white/10 bg-[#ff3399] transition-all" data-color="#ff3399" data-emissive="1.5" title="Neon Pink"></button>
+                    </div>
+                </div>
+
+                <!-- Surface Roughness -->
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <label class="block text-[11px] uppercase tracking-[0.2em] text-gray-400">Material Roughness</label>
+                        <span id="roughness-val" class="text-xs font-mono text-gray-400">50%</span>
+                    </div>
+                    <input type="range" id="roughness-slider" min="0" max="1" step="0.05" value="0.5" class="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-purple-500">
+                </div>
+
+                <!-- Metalness -->
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <label class="block text-[11px] uppercase tracking-[0.2em] text-gray-400">Metallic Glaze</label>
+                        <span id="metalness-val" class="text-xs font-mono text-gray-400">10%</span>
+                    </div>
+                    <input type="range" id="metalness-slider" min="0" max="1" step="0.05" value="0.1" class="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-purple-500">
+                </div>
+
+                <!-- Stitch Glow Intensity -->
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <label class="block text-[11px] uppercase tracking-[0.2em] text-gray-400">Seam Luminescence</label>
+                        <span id="glow-val" class="text-xs font-mono text-gray-400">0.0</span>
+                    </div>
+                    <input type="range" id="glow-slider" min="0" max="5" step="0.2" value="0" class="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-purple-500">
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-white/10 space-y-4">
+            <button id="btn-save-specs" class="w-full py-4 rounded-full bg-purple-600 hover:bg-purple-500 active:scale-95 transition-all text-white font-bold tracking-[0.2em] text-xs uppercase shadow-lg shadow-purple-600/20">
+                Generate custom order
+            </button>
+            <p class="text-[9px] text-center text-gray-500 uppercase tracking-widest">Specifications cached to browser. Customizations are fully unique.</p>
+        </div>
+    </div>
+
+    <!-- SCRIPT INITS -->
+    <script>
+        // 1. WEB AUDIO API SYNTHESIZER FOR LUXURY SOUND DESIGN (No external assets required!)
+        class AudioSynth {
+            constructor() {
+                this.ctx = null;
+                this.enabled = true;
+            }
+            init() {
+                if (!this.ctx) {
+                    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+            }
+            playCrack() {
+                if (!this.enabled) return;
+                this.init();
+                const now = this.ctx.currentTime;
+                
+                // Crisp Baseball Bat Impact Synthesis
+                // 1. High-frequency impulse click
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(900, now);
+                osc.frequency.exponentialRampToValueAtTime(120, now + 0.08);
+                
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+                
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.1);
+
+                // 2. White noise wood vibration tail
+                const bufferSize = this.ctx.sampleRate * 0.15;
+                const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1;
+                }
+                const noise = this.ctx.createBufferSource();
+                noise.buffer = buffer;
+
+                const filter = this.ctx.createBiquadFilter();
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(320, now);
+                filter.Q.setValueAtTime(2.0, now);
+
+                const noiseGain = this.ctx.createGain();
+                noiseGain.gain.setValueAtTime(0.12, now);
+                noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+
+                noise.connect(filter);
+                filter.connect(noiseGain);
+                noiseGain.connect(this.ctx.destination);
+                
+                noise.start(now);
+                noise.stop(now + 0.15);
+            }
+            playWhoosh() {
+                if (!this.enabled) return;
+                this.init();
+                const now = this.ctx.currentTime;
+
+                // Windy seam aerodynamic whoosh
+                const bufferSize = this.ctx.sampleRate * 0.4;
+                const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1;
+                }
+                const noise = this.ctx.createBufferSource();
+                noise.buffer = buffer;
+
+                const filter = this.ctx.createBiquadFilter();
+                filter.type = 'peaking';
+                filter.frequency.setValueAtTime(100, now);
+                filter.frequency.exponentialRampToValueAtTime(1400, now + 0.2);
+                filter.frequency.exponentialRampToValueAtTime(300, now + 0.4);
+                filter.Q.setValueAtTime(3.0, now);
+
+                const gain = this.ctx.createGain();
+                gain.gain.setValueAtTime(0.01, now);
+                gain.gain.linearRampToValueAtTime(0.08, now + 0.15);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(this.ctx.destination);
+
+                noise.start(now);
+                noise.stop(now + 0.4);
+            }
+        }
+        const synth = new AudioSynth();
+
+        // Bind Sound UI Action
+        const soundBtn = document.getElementById('btn-sound');
+        soundBtn.addEventListener('click', () => {
+            synth.enabled = !synth.enabled;
+            const waves = soundBtn.querySelectorAll('.sound-wave-bar');
+            const statusText = soundBtn.querySelector('span');
+            
+            if (synth.enabled) {
+                statusText.innerText = "Sound On";
+                waves.forEach(bar => bar.style.animationPlayState = 'running');
+                synth.playCrack();
+            } else {
+                statusText.innerText = "Sound Off";
+                waves.forEach(bar => bar.style.animationPlayState = 'paused');
+            }
+        });
+
+
+        // 2. THREE.JS 3D WORLD BUILDER
+        let container = document.getElementById('canvas-container');
+        let scene, camera, renderer;
+        let mainBall;         // Sphere Mesh
+        let stitchInstances;  // InstancedMesh for baseball stitching
+        let stitchPositions = []; // To easily recreate or update seams
+        let pointLightLeft, pointLightRight, rimLight, keyLight;
+
+        // Customizer cached values representing active morph state
+        let activeSpecs = {
+            baseColor: '#fcfbf7',
+            stitchColor: '#cc1a1a',
+            roughness: 0.5,
+            metalness: 0.1,
+            emissive: 0.0
+        };
+
+        const ballProfiles = [
+            { // Classic
+                baseColor: '#fcfbf7',
+                stitchColor: '#cc1a1a',
+                roughness: 0.4,
+                metalness: 0.1,
+                emissive: 0.0,
+                glowColor: '#ff2200',
+                ambient: 'radial-gradient(circle at 30% 50%, #4a154b 0%, transparent 60%)'
+            },
+            { // Vintage
+                baseColor: '#5c4033',
+                stitchColor: '#dfd5c6',
+                roughness: 0.85,
+                metalness: 0.0,
+                emissive: 0.0,
+                glowColor: '#000000',
+                ambient: 'radial-gradient(circle at 30% 50%, #301f11 0%, transparent 60%)'
+            },
+            { // Aurum Elite
+                baseColor: '#d4af37',
+                stitchColor: '#1a1a1a',
+                roughness: 0.1,
+                metalness: 0.95,
+                emissive: 0.0,
+                glowColor: '#000000',
+                ambient: 'radial-gradient(circle at 30% 50%, #292410 0%, transparent 60%)'
+            },
+            { // Lumina Neon
+                baseColor: '#1a1a24',
+                stitchColor: '#00ffcc',
+                roughness: 0.5,
+                metalness: 0.4,
+                emissive: 2.0,
+                glowColor: '#00ffcc',
+                ambient: 'radial-gradient(circle at 30% 50%, #153243 0%, transparent 60%)'
+            }
+        ];
+
+        function init3D() {
+            scene = new THREE.Scene();
+
+            // Camera setup with dynamic responsive aspect ratio
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+            camera.position.set(0, 0, 5.5);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setSize(width, height);
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.toneMappingExposure = 1.25;
+            container.appendChild(renderer.domElement);
+
+            // Lighting System
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+            scene.add(ambientLight);
+
+            keyLight = new THREE.DirectionalLight(0xffffff, 1.5);
+            keyLight.position.set(5, 4, 3);
+            scene.add(keyLight);
+
+            rimLight = new THREE.DirectionalLight(0xa551e6, 2.0); // luxury violet rim
+            rimLight.position.set(-6, 3, -4);
+            scene.add(rimLight);
+
+            // Left soft fill light
+            pointLightLeft = new THREE.PointLight(0xffffff, 0.5, 10);
+            pointLightLeft.position.set(-3, -2, 2);
+            scene.add(pointLightLeft);
+
+            // Right warm spot
+            pointLightRight = new THREE.PointLight(0xffd59a, 0.6, 10);
+            pointLightRight.position.set(3, 1, 2);
+            scene.add(pointLightRight);
+
+            // BASEBALL SPHERE
+            const sphereGeom = new THREE.SphereGeometry(1.6, 64, 64);
+            const initialProfile = ballProfiles[0];
+            const ballMaterial = new THREE.MeshStandardMaterial({
+                color: new THREE.Color(initialProfile.baseColor),
+                roughness: initialProfile.roughness,
+                metalness: initialProfile.metalness,
+                bumpScale: 0.015
+            });
+
+            // Procedural leather bump map generation in JS Memory (No external assets required!)
+            const size = 128;
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#808080';
+            ctx.fillRect(0, 0, size, size);
+            // Paint subtle noise texture
+            for (let i = 0; i < 4000; i++) {
+                const x = Math.random() * size;
+                const y = Math.random() * size;
+                const r = Math.random() * 1.5 + 0.5;
+                const alpha = Math.random() * 0.15;
+                ctx.fillStyle = `rgba(${Math.random() > 0.5 ? 255 : 0}, ${Math.random() > 0.5 ? 255 : 0}, ${Math.random() > 0.5 ? 255 : 0}, ${alpha})`;
+                ctx.beginPath();
+                ctx.arc(x, y, r, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            const leatherTexture = new THREE.CanvasTexture(canvas);
+            leatherTexture.wrapS = THREE.RepeatWrapping;
+            leatherTexture.wrapT = THREE.RepeatWrapping;
+            leatherTexture.repeat.set(8, 8);
+            ballMaterial.bumpMap = leatherTexture;
+            ballMaterial.bumpScale = 0.004;
+
+            mainBall = new THREE.Mesh(sphereGeom, ballMaterial);
+            scene.add(mainBall);
+
+            // CREATE HIGH-FIDELITY BASEBALL SEAM STITCHES
+            // Stitches generated using standard parametric math of a baseball seam line
+            generateBaseballStitches(1.6);
+
+            // Window resize handler
+            window.addEventListener('resize', onWindowResize);
+            
+            // Mouse parallax movement handler for luxury 3D playability
+            let targetRotationX = 0;
+            let targetRotationY = 0;
+            let mouseX = 0;
+            let mouseY = 0;
+            const windowHalfX = window.innerWidth / 2;
+            const windowHalfY = window.innerHeight / 2;
+
+            container.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX - windowHalfX) / 1000;
+                mouseY = (event.clientY - windowHalfY) / 1000;
+            });
+
+            // Start continuous render loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Auto rotate slightly for fluid dynamic ambient life
+                mainBall.rotation.y += 0.002;
+                if (stitchInstances) {
+                    stitchInstances.rotation.y = mainBall.rotation.y;
+                    stitchInstances.rotation.x = mainBall.rotation.x;
+                    stitchInstances.rotation.z = mainBall.rotation.z;
+                }
+
+                // Mouse follow physics interpolation
+                targetRotationX += (mouseY - targetRotationX) * 0.05;
+                targetRotationY += (mouseX - targetRotationY) * 0.05;
+
+                mainBall.rotation.x = targetRotationX;
+                mainBall.rotation.z = -targetRotationY * 0.5;
+
+                renderer.render(scene, camera);
+            }
+            
+            // Start render loop on load
+            animate();
+        }
+
+        // Generates the stitch geometry along the mathematical infinity baseball seam curve
+        function generateBaseballStitches(radius) {
+            const stitchCount = 180;
+            const stitchGeo = new THREE.BoxGeometry(0.04, 0.015, 0.015);
+            const stitchMat = new THREE.MeshStandardMaterial({
+                color: 0xcc1a1a,
+                roughness: 0.4,
+                metalness: 0.1
+            });
+
+            // Remove previous instanced meshes if reloading/customizing
+            if (stitchInstances) {
+                scene.remove(stitchInstances);
+            }
+
+            stitchInstances = new THREE.InstancedMesh(stitchGeo, stitchMat, stitchCount);
+            
+            const matrix = new THREE.Matrix4();
+            const position = new THREE.Vector3();
+            const rotation = new THREE.Euler();
+            const quaternion = new THREE.Quaternion();
+            const scale = new THREE.Vector3(1, 1, 1);
+
+            // Baseball curve formula parameterised
+            // x = R * cos(t) * sqrt(1 - a^2 * cos^2(2t))
+            // y = R * sin(t) * sqrt(1 - a^2 * cos^2(2t))
+            // z = R * a * cos(2t)
+            const a = 0.58; 
+            const seamOffset = 0.01; // Scale factor outwards so stitch sits above the sphere skin
+
+            for (let i = 0; i < stitchCount; i++) {
+                const t = (i / stitchCount) * Math.PI * 2;
+                
+                // Base seam point
+                const factor = Math.sqrt(1 - a*a * Math.pow(Math.cos(2*t), 2));
+                const x = radius * Math.cos(t) * factor;
+                const y = radius * Math.sin(t) * factor;
+                const z = radius * a * Math.cos(2*t);
+
+                // Displace stitches outwards slightly so they reside perfectly on the skin surface
+                position.set(x, y, z).normalize().multiplyScalar(radius + 0.008);
+
+                // Dynamic stitch angle aligning with the seam tangent
+                // Numerical tangent approximation
+                const dt = 0.01;
+                const factor2 = Math.sqrt(1 - a*a * Math.pow(Math.cos(2*(t+dt)), 2));
+                const tx = radius * Math.cos(t+dt) * factor2;
+                const ty = radius * Math.sin(t+dt) * factor2;
+                const tz = radius * a * Math.cos(2*(t+dt));
+                
+                const tangent = new THREE.Vector3(tx - x, ty - y, tz - z).normalize();
+                const normal = position.clone().normalize();
+                const bitangent = new THREE.Vector3().crossVectors(tangent, normal).normalize();
+
+                // Rotate stitch so it lies flat on the sphere pointing along the seam, 
+                // but slightly offset/angled like high-grade hand-stitching (e.g. V-shaped pattern)
+                const angleOffset = (i % 2 === 0 ? 0.35 : -0.35); // V stitch alternating angle
+                const finalDirection = tangent.clone().applyAxisAngle(normal, angleOffset);
+
+                const rotationMatrix = new THREE.Matrix4().makeBasis(finalDirection, bitangent, normal);
+                quaternion.setFromRotationMatrix(rotationMatrix);
+
+                matrix.compose(position, quaternion, scale);
+                stitchInstances.setMatrixAt(i, matrix);
+                
+                // Color configuration
+                stitchInstances.setColorAt(i, new THREE.Color(activeSpecs.stitchColor));
+            }
+
+            stitchInstances.instanceMatrix.needsUpdate = true;
+            if (stitchInstances.instanceColor) stitchInstances.instanceColor.needsUpdate = true;
+            scene.add(stitchInstances);
+        }
+
+        function onWindowResize() {
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+        }
+
+
+        // 3. GSAP SCROLLTRIGGER ENGINE FOR SECTIONS & BALL MATERIAL MORPHING
+        function initAnimations() {
+            // Register GSAP ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
+
+            const sections = document.querySelectorAll('.scroll-section');
+            const dots = document.querySelectorAll('.nav-dot');
+
+            sections.forEach((section, index) => {
+                const profile = ballProfiles[index];
+
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: "top center",
+                    end: "bottom center",
+                    onEnter: () => updateBallState(profile, index),
+                    onEnterBack: () => updateBallState(profile, index),
+                });
+            });
+
+            // Smoothly morphs the ball material parameters, stitch colors, light settings
+            function updateBallState(profile, index) {
+                // Play aerodynamic atmospheric swoosh
+                synth.playWhoosh();
+
+                // 1. Update Navigation Dots
+                dots.forEach((dot, dIdx) => {
+                    if (dIdx === index) {
+                        dot.classList.add('bg-white', 'scale-125');
+                        dot.classList.remove('bg-white/20');
+                    } else {
+                        dot.classList.remove('bg-white', 'scale-125');
+                        dot.classList.add('bg-white/20');
+                    }
+                });
+
+                // 2. Morph Ball Materials using GSAP Tweens
+                gsap.to(mainBall.material.color, {
+                    r: new THREE.Color(profile.baseColor).r,
+                    g: new THREE.Color(profile.baseColor).g,
+                    b: new THREE.Color(profile.baseColor).b,
+                    duration: 1.2,
+                    ease: "power2.out"
+                });
+
+                gsap.to(mainBall.material, {
+                    roughness: profile.roughness,
+                    metalness: profile.metalness,
+                    duration: 1.2,
+                    ease: "power2.out"
+                });
+
+                // Morph Stitch colors
+                const stitchTargetColor = new THREE.Color(profile.stitchColor);
+                const tempColor = new THREE.Color();
+                
+                // Procedurally tween each individual instanced stitch color
+                const count = stitchInstances.count;
+                gsap.to({}, {
+                    duration: 1.2,
+                    ease: "power2.out",
+                    onUpdate: function() {
+                        const progress = this.progress();
+                        for (let i = 0; i < count; i++) {
+                            stitchInstances.getColorAt(i, tempColor);
+                            tempColor.lerp(stitchTargetColor, progress * 0.08); // smoothly blend
+                            stitchInstances.setColorAt(i, tempColor);
+                        }
+                        if (stitchInstances.instanceColor) {
+                            stitchInstances.instanceColor.needsUpdate = true;
+                        }
+                    }
+                });
+
+                // Modify stitch emissive properties (glow intensity) for Lumina Neon section
+                if (profile.emissive > 0) {
+                    gsap.to(rimLight, { intensity: 4, duration: 1.2 });
+                    rimLight.color.setHex(0x00ffcc);
+                } else {
+                    gsap.to(rimLight, { intensity: 2, duration: 1.2 });
+                    rimLight.color.setHex(0xa551e6); // luxury violet rim default
+                }
+
+                // 3. Smooth Rotate the baseball base to showcase distinct faces per section
+                const targetRotations = [
+                    { x: 0.1, y: 0.4 },  // Classic face forward
+                    { x: 0.8, y: -0.6 }, // Vintage vertical texture slant
+                    { x: -0.5, y: 1.2 }, // Aurum gleaming golden orbit
+                    { x: 1.2, y: 2.3 }   // Cyberpunk abstract grid angles
+                ];
+                
+                gsap.to(mainBall.rotation, {
+                    x: targetRotations[index].x,
+                    y: targetRotations[index].y,
+                    duration: 1.5,
+                    ease: "power3.out"
+                });
+
+                // 4. Update Backdrop Luxury ambient glows matching the section palettes
+                const ambientGlow = document.getElementById('ambient-glow');
+                ambientGlow.style.background = profile.ambient;
+
+                // Sync current state specs with Interactive design customizer
+                activeSpecs = {
+                    baseColor: profile.baseColor,
+                    stitchColor: profile.stitchColor,
+                    roughness: profile.roughness,
+                    metalness: profile.metalness,
+                    emissive: profile.emissive
+                };
+                updateCustomizerUIElements();
+            }
+
+            // Dot navigation clicks (smooth transitions)
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const idx = parseInt(dot.getAttribute('data-index'));
+                    const targetSection = sections[idx];
+                    
+                    gsap.to(window, {
+                        scrollTo: { y: targetSection, autoKill: false },
+                        duration: 1.2,
+                        ease: "power3.inOut"
+                    });
+                });
+            });
+
+            // "Next Design" arrow-based scrolling triggers
+            document.querySelectorAll('.scroll-next-btn').forEach((btn, idx) => {
+                btn.addEventListener('click', () => {
+                    if (idx + 1 < sections.length) {
+                        gsap.to(window, {
+                            scrollTo: { y: sections[idx + 1], autoKill: false },
+                            duration: 1.2,
+                            ease: "power3.inOut"
+                        });
+                    }
+                });
+            });
+
+            // Back to top button
+            document.getElementById('scroll-top-btn').addEventListener('click', () => {
+                gsap.to(window, {
+                    scrollTo: { y: 0, autoKill: false },
+                    duration: 1.5,
+                    ease: "power3.inOut"
+                });
+            });
+        }
+
+
+        // 4. BESPOKE INTERACTIVE DESIGN STUDIO OVERLAY LOGIC
+        const customizerDrawer = document.getElementById('customizer-drawer');
+        const openButtons = document.querySelectorAll('.btn-open-customizer');
+        const openStudioBtn = document.getElementById('btn-theme-customizer');
+        const closeBtn = document.getElementById('btn-close-customizer');
+
+        function toggleCustomizer(open = true) {
+            if (open) {
+                synth.playCrack();
+                customizerDrawer.classList.remove('translate-x-full');
+            } else {
+                synth.playCrack();
+                customizerDrawer.classList.add('translate-x-full');
+            }
+        }
+
+        openButtons.forEach(btn => btn.addEventListener('click', () => toggleCustomizer(true)));
+        openStudioBtn.addEventListener('click', () => toggleCustomizer(true));
+        closeBtn.addEventListener('click', () => toggleCustomizer(false));
+
+        // Sync Customizer Input Sliders with Live Three.js Mesh properties in Real-Time
+        const baseColorInput = document.getElementById('base-color-input');
+        const baseColorText = document.getElementById('base-color-text');
+        const roughnessSlider = document.getElementById('roughness-slider');
+        const roughnessVal = document.getElementById('roughness-val');
+        const metalnessSlider = document.getElementById('metalness-slider');
+        const metalnessVal = document.getElementById('metalness-val');
+        const glowSlider = document.getElementById('glow-slider');
+        const glowVal = document.getElementById('glow-val');
+
+        function updateCustomizerUIElements() {
+            baseColorInput.value = activeSpecs.baseColor;
+            baseColorText.value = activeSpecs.baseColor;
+            roughnessSlider.value = activeSpecs.roughness;
+            roughnessVal.innerText = `${Math.round(activeSpecs.roughness * 100)}%`;
+            metalnessSlider.value = activeSpecs.metalness;
+            metalnessVal.innerText = `${Math.round(activeSpecs.metalness * 100)}%`;
+            glowSlider.value = activeSpecs.emissive;
+            glowVal.innerText = activeSpecs.emissive.toFixed(1);
+
+            // Set active visual ring indicator on selected color/stitch preset
+            document.querySelectorAll('.color-preset-btn').forEach(btn => {
+                if (btn.getAttribute('data-color').toLowerCase() === activeSpecs.baseColor.toLowerCase()) {
+                    btn.classList.add('border-white', 'scale-110');
+                    btn.classList.remove('border-white/10');
+                } else {
+                    btn.classList.remove('border-white', 'scale-110');
+                    btn.classList.add('border-white/10');
+                }
+            });
+
+            document.querySelectorAll('.stitch-color-btn').forEach(btn => {
+                if (btn.getAttribute('data-color').toLowerCase() === activeSpecs.stitchColor.toLowerCase()) {
+                    btn.classList.add('border-white', 'scale-110');
+                    btn.classList.remove('border-white/10');
+                } else {
+                    btn.classList.remove('border-white', 'scale-110');
+                    btn.classList.add('border-white/10');
+                }
+            });
+        }
+
+        // Preset button handlers
+        document.querySelectorAll('.color-preset-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                synth.playWhoosh();
+                activeSpecs.baseColor = btn.getAttribute('data-color');
+                activeSpecs.roughness = parseFloat(btn.getAttribute('data-roughness'));
+                activeSpecs.metalness = parseFloat(btn.getAttribute('data-metalness'));
+                
+                mainBall.material.color.set(activeSpecs.baseColor);
+                mainBall.material.roughness = activeSpecs.roughness;
+                mainBall.material.metalness = activeSpecs.metalness;
+
+                updateCustomizerUIElements();
+            });
+        });
+
+        document.querySelectorAll('.stitch-color-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                synth.playWhoosh();
+                activeSpecs.stitchColor = btn.getAttribute('data-color');
+                activeSpecs.emissive = parseFloat(btn.getAttribute('data-emissive'));
+                
+                generateBaseballStitches(1.6);
+                updateCustomizerUIElements();
+            });
+        });
+
+        // Color Picker & Text Input change events
+        baseColorInput.addEventListener('input', (e) => {
+            activeSpecs.baseColor = e.target.value;
+            baseColorText.value = e.target.value;
+            mainBall.material.color.set(activeSpecs.baseColor);
+        });
+
+        baseColorText.addEventListener('input', (e) => {
+            if (e.target.value.length === 7 && e.target.value.startsWith('#')) {
+                activeSpecs.baseColor = e.target.value;
+                baseColorInput.value = e.target.value;
+                mainBall.material.color.set(activeSpecs.baseColor);
+            }
+        });
+
+        roughnessSlider.addEventListener('input', (e) => {
+            activeSpecs.roughness = parseFloat(e.target.value);
+            mainBall.material.roughness = activeSpecs.roughness;
+            roughnessVal.innerText = `${Math.round(activeSpecs.roughness * 100)}%`;
+        });
+
+        metalnessSlider.addEventListener('input', (e) => {
+            activeSpecs.metalness = parseFloat(e.target.value);
+            mainBall.material.metalness = activeSpecs.metalness;
+            metalnessVal.innerText = `${Math.round(activeSpecs.metalness * 100)}%`;
+        });
+
+        glowSlider.addEventListener('input', (e) => {
+            activeSpecs.emissive = parseFloat(e.target.value);
+            glowVal.innerText = activeSpecs.emissive.toFixed(1);
+            if (activeSpecs.emissive > 0) {
+                rimLight.intensity = 2.0 + activeSpecs.emissive;
+            } else {
+                rimLight.intensity = 2.0;
+            }
+        });
+
+        // "Generate Order Specs" notification click
+        document.getElementById('btn-save-specs').addEventListener('click', () => {
+            synth.playCrack();
+            
+            // Create bespoke modal alert instead of default native popups
+            const alertBox = document.createElement('div');
+            alertBox.className = "fixed inset-0 flex items-center justify-center z-50 px-4 bg-black/60 backdrop-blur-sm animate-fade-in";
+            alertBox.innerHTML = `
+                <div class="glass-panel p-8 rounded-3xl max-w-sm w-full text-center border border-white/10 shadow-2xl">
+                    <div class="w-16 h-16 bg-purple-500/20 text-purple-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-check text-2xl"></i>
+                    </div>
+                    <h4 class="luxury-font text-lg font-bold tracking-widest text-white mb-2">DESIGN SECURED</h4>
+                    <p class="text-xs text-gray-400 mb-6 leading-relaxed">Your specifications have been cached on our cloud ledger. Reference code <span class="font-mono text-purple-400 font-bold block mt-1">MC-${Math.floor(100000 + Math.random() * 900000)}</span></p>
+                    <button id="alert-ok" class="px-6 py-3 bg-purple-600 hover:bg-purple-500 rounded-full text-xs font-semibold tracking-wider uppercase text-white transition-all w-full">OK, Back to collection</button>
+                </div>
+            `;
+            document.body.appendChild(alertBox);
+            
+            document.getElementById('alert-ok').addEventListener('click', () => {
+                alertBox.remove();
+                toggleCustomizer(false);
+            });
+        });
+
+
+        // 5. WINDOW INITIALIZATION
+        window.onload = function() {
+            init3D();
+            initAnimations();
+            
+            // Simple ScrollTo plugin fallback directly with basic window scroll handling if GSAP scroll plugin doesn't load
+            if (typeof gsap.plugins.scrollTo === 'undefined') {
+                // Procedural polyfill
+                gsap.registerPlugin({
+                    name: "scrollTo",
+                    init(target, value) {
+                        this.target = window;
+                        this.y = typeof value === "object" ? value.y : value;
+                    },
+                    render(ratio, data) {
+                        const targetY = typeof data.y === "string" ? document.querySelector(data.y).offsetTop : data.y;
+                        window.scrollTo(0, targetY * ratio);
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
