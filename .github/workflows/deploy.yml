@@ -29,7 +29,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # 👉 CHANGE THIS LINE to deploy the project you want
-          path: ./CASTLE-Morphosis
+          path: ./3D-Baseball-Showcase
           # path: ./3D-Baseball-Showcase
 
       - name: Deploy to GitHub Pages
