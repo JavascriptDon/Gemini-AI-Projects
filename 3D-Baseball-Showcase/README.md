@@ -2,6 +2,10 @@
 
 An ultra‑premium, interactive 3D landing page and design studio crafted to showcase limited‑edition collector’s baseballs. 
 
+
+https://github.com/user-attachments/assets/d6276d6d-6d4b-4ee4-903e-aa9a5f24d96f
+
+
 ---
 
 ## **🌟 Key Features**
