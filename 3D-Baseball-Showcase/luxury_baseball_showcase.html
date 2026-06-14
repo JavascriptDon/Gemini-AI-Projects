@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Baseball | Premium Baseball Collection</title>
-    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA////AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREQAAAAAAEREREQAAAAEREREREAAAEhEREREhAAARIREREhEAARESEREhERABEREhEhEREAERESESEREQARERIRIRERABEREhEhEREAARESESEREAABESEREhEQAAASERERIQAAAAEREREQAAAAAAEREAAAD//wAA/D8AAPAPAADgBwAAwAMAAMADAACAAQAAgAEAAIABAACAAQAAgAEAAMADAADAAwAA4AcAAPAPAAD8PwAA" rel="icon" type="image/x-icon">
+    <title>3D-Baseball | Premium Baseball Collection</title>
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -12,7 +12,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
-    
+	
+	<!-- Favicon -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAgB/oACAcHAPr6+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERERERERERERERERESIiERERERESIiIhERERESAiIgIRERESIgIgIiERERIiAiAiIREREiICICIhERESIgIgIiERERIiAiAiIREREiICICIhERERICIiAhERERESIiIhEREREREiIhEREREREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon">
     <!-- FontAwesome for Premium Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -32,6 +34,14 @@
         }
         h1, h2, h3, .luxury-font {
             font-family: 'Cinzel', serif;
+        }
+        /* Fluid luxury transitions for smooth theme switching */
+        body, #ambient-glow, .glass-panel, .nav-dot, header a, button, input {
+            transition: background 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                        background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                        color 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                        opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         /* Custom scrollbar to keep layout premium */
         ::-webkit-scrollbar {
@@ -68,6 +78,98 @@
             0% { transform: scaleY(0.3); }
             100% { transform: scaleY(1); }
         }
+
+        /* LIGHT MODE STYLING OVERRIDES */
+        body.light-mode {
+            background-color: #f6f5f1;
+            color: #121113;
+        }
+        body.light-mode #ambient-glow {
+            opacity: 0.6 !important;
+        }
+        body.light-mode .text-white {
+            color: #121113 !important;
+        }
+        body.light-mode .text-gray-400 {
+            color: #55525a !important;
+        }
+        body.light-mode .text-gray-300 {
+            color: #3b383e !important;
+        }
+        body.light-mode .text-white\/50 {
+            color: rgba(18, 17, 19, 0.6) !important;
+        }
+        body.light-mode .text-white\/30 {
+            color: rgba(18, 17, 19, 0.35) !important;
+        }
+        body.light-mode .border-white\/10 {
+            border-color: rgba(0, 0, 0, 0.08) !important;
+        }
+        body.light-mode .border-white\/15 {
+            border-color: rgba(0, 0, 0, 0.12) !important;
+        }
+        body.light-mode .bg-white\/5 {
+            background-color: rgba(0, 0, 0, 0.04) !important;
+        }
+        body.light-mode .bg-black\/20 {
+            background-color: rgba(255, 255, 255, 0.75) !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+        }
+        /* Buttons / Controls */
+        body.light-mode .bg-white {
+            background-color: #121113 !important;
+            color: #f6f5f1 !important;
+        }
+        body.light-mode .bg-white .relative {
+            color: #f6f5f1 !important;
+        }
+        body.light-mode .btn-open-customizer .absolute {
+            background: linear-gradient(to right, #2d2a30, #121113) !important;
+        }
+        /* Design Studio Drawer in Light Mode */
+        body.light-mode .glass-panel {
+            background: rgba(246, 245, 241, 0.9) !important;
+            border: 1px solid rgba(0, 0, 0, 0.08) !important;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.04);
+        }
+        body.light-mode #customizer-drawer h3, 
+        body.light-mode #customizer-drawer label, 
+        body.light-mode #customizer-drawer span {
+            color: #121113 !important;
+        }
+        body.light-mode #customizer-drawer input[type="text"] {
+            background-color: rgba(0, 0, 0, 0.03) !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            color: #121113 !important;
+        }
+        body.light-mode #customizer-drawer input[type="text"]:focus {
+            border-color: #8b5cf6 !important; /* purple-500 */
+        }
+        body.light-mode #customizer-drawer .color-preset-btn,
+        body.light-mode #customizer-drawer .stitch-color-btn {
+            border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+        body.light-mode #customizer-drawer .color-preset-btn.border-white,
+        body.light-mode #customizer-drawer .stitch-color-btn.border-white {
+            border-color: #121113 !important;
+        }
+        /* Navigation Dots */
+        body.light-mode .bg-white\/20 {
+            background-color: rgba(0, 0, 0, 0.15) !important;
+        }
+        body.light-mode .nav-dot.bg-white {
+            background-color: #121113 !important;
+            border-color: #121113 !important;
+        }
+        body.light-mode .h-16.w-\[1px\] {
+            background-color: rgba(0, 0, 0, 0.08) !important;
+        }
+        body.light-mode ::-webkit-scrollbar-track {
+            background: #f6f5f1;
+        }
+        body.light-mode ::-webkit-scrollbar-thumb {
+            background: #d8d6d0;
+        }
     </style>
 </head>
 <body class="relative selection:bg-purple-900 selection:text-white">
@@ -80,11 +182,11 @@
     <!-- Header Navigation -->
     <header class="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-center transition-all duration-300">
         <a href="#" class="luxury-font text-xl md:text-2xl tracking-[0.25em] font-bold text-white transition-colors duration-300 hover:text-purple-300">
-            Premium_Baseball
+            Baseballs & Co.
         </a>
         
         <!-- Quick Stats & Actions -->
-        <div class="flex items-center gap-6">
+        <div class="flex items-center gap-4 sm:gap-6">
             <!-- Audio Toggle Synthesizer -->
             <button id="btn-sound" class="text-white hover:text-purple-300 transition-colors flex items-center gap-2 group py-2 px-3 rounded-full border border-white/10 hover:border-purple-500/30 bg-black/20" title="Toggle Interactive Sound Effects">
                 <div class="flex items-end gap-0.5 h-3 w-4 overflow-hidden">
@@ -95,7 +197,13 @@
                 <span class="text-[10px] tracking-[0.2em] font-semibold uppercase hidden sm:inline">Sound On</span>
             </button>
 
-            <!-- Light/Dark Customizer Trigger -->
+            <!-- Light/Dark Theme Switcher -->
+            <button id="btn-theme-toggle" class="text-white hover:text-purple-300 transition-colors py-2 px-3 rounded-full border border-white/10 hover:border-purple-500/30 bg-black/20 flex items-center gap-2" title="Toggle Light/Dark Theme">
+                <i class="fa-solid fa-moon text-xs"></i>
+                <span class="text-[10px] tracking-[0.2em] font-semibold uppercase hidden sm:inline">Theme</span>
+            </button>
+
+            <!-- Customizer Studio Trigger -->
             <button id="btn-theme-customizer" class="text-white hover:text-purple-300 transition-colors py-2 px-3 rounded-full border border-white/10 hover:border-purple-500/30 bg-black/20 flex items-center gap-2">
                 <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
                 <span class="text-[10px] tracking-[0.2em] font-semibold uppercase hidden sm:inline">Design Studio</span>
@@ -128,9 +236,9 @@
         <!-- SECTION 1: THE CLASSIC 108 -->
         <section id="section-classic" class="scroll-section w-full px-6 md:px-12 lg:pl-[50%] flex items-center" data-ball="classic">
             <div class="max-w-xl w-full py-24 lg:py-0">
-                <span class="text-xs tracking-[0.4em] text-purple-400 font-semibold uppercase block mb-4 animate-fade">Collection I: Traditionalist</span>
+                <span class="text-xs tracking-[0.4em] text-purple-500 font-semibold uppercase block mb-4 animate-fade">Collection I: Traditionalist</span>
                 <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-wider leading-tight mb-6">
-                    THE CLASSIC <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">108 STITCH</span>
+                    THE CLASSIC <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-600 to-indigo-600">108 STITCH</span>
                 </h1>
                 <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8 max-w-lg font-light">
                     Meticulously crafted with selected full-grain premium cowhide leather. Bound by precisely one-hundred and eight double-needle crimson stitches to ensure aerodynamic supremacy and flawless weight distribution.
@@ -164,7 +272,7 @@
             <div class="max-w-xl w-full py-24 lg:py-0">
                 <span class="text-xs tracking-[0.4em] text-amber-500 font-semibold uppercase block mb-4">Collection II: Heritage</span>
                 <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-wider leading-tight mb-6">
-                    THE VINTAGE <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-800">HEIRLOOM</span>
+                    THE VINTAGE <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-800">HEIRLOOM</span>
                 </h2>
                 <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8 max-w-lg font-light">
                     A tribute to the origins of the game. Hand-polished, distressed chestnut mahogany leather treated with natural beeswax oils, held securely by heavy hemp-cord flat stitching to offer a rustic texture and rich sensory grip.
@@ -195,9 +303,9 @@
         <!-- SECTION 3: THE AURUM ELITE -->
         <section id="section-aurum" class="scroll-section w-full px-6 md:px-12 lg:pl-[50%] flex items-center" data-ball="aurum">
             <div class="max-w-xl w-full py-24 lg:py-0">
-                <span class="text-xs tracking-[0.4em] text-yellow-400 font-semibold uppercase block mb-4">Collection III: Prestige</span>
+                <span class="text-xs tracking-[0.4em] text-yellow-500 font-semibold uppercase block mb-4">Collection III: Prestige</span>
                 <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-wider leading-tight mb-6">
-                    THE AURUM <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-500 to-amber-600">PREMIER</span>
+                    THE AURUM <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-600 to-amber-600">PREMIER</span>
                 </h2>
                 <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8 max-w-lg font-light">
                     A masterclass in luxury design. Polished gold electroplate exterior shell matched elegantly with high-gloss hand-carved obsidian seam structures. An ultimate display piece celebrating record achievements and historic milestones.
@@ -264,8 +372,8 @@
     <footer class="fixed bottom-0 left-0 w-full z-40 px-6 py-6 md:px-12 flex justify-between items-center pointer-events-none text-xs text-white/30">
         <div class="hidden md:block">Handcrafted in Limited Batches.</div>
         <div class="pointer-events-auto flex items-center gap-4">
-            <span class="hidden md:inline">Premium-Baseball © 2026</span>
-            <a href="https://github.com/JavascriptDon/3D-Baseball-Showcase" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-github text-base"></i></a>
+            <span class="hidden md:inline">Baseballs & Co. © <span id="year"></span></span>
+            <a href="https://github.com/JavascriptDon/Gemini-AI-Projects" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-github text-base"></i></a>
         </div>
     </footer>
 
@@ -357,6 +465,7 @@
 
     <!-- SCRIPT INITS -->
     <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
         // 1. WEB AUDIO API SYNTHESIZER FOR LUXURY SOUND DESIGN (No external assets required!)
         class AudioSynth {
             constructor() {
@@ -374,7 +483,6 @@
                 const now = this.ctx.currentTime;
                 
                 // Crisp Baseball Bat Impact Synthesis
-                // 1. High-frequency impulse click
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
                 osc.type = 'sine';
@@ -389,7 +497,7 @@
                 osc.start(now);
                 osc.stop(now + 0.1);
 
-                // 2. White noise wood vibration tail
+                // White noise vibration tail
                 const bufferSize = this.ctx.sampleRate * 0.15;
                 const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
                 const data = buffer.getChannelData(0);
@@ -476,7 +584,8 @@
         let mainBall;         // Sphere Mesh
         let stitchInstances;  // InstancedMesh for baseball stitching
         let stitchPositions = []; // To easily recreate or update seams
-        let pointLightLeft, pointLightRight, rimLight, keyLight;
+        let pointLightLeft, pointLightRight, rimLight, keyLight, ambientLight;
+        let isDarkMode = true; // Global Theme tracker
 
         // Customizer cached values representing active morph state
         let activeSpecs = {
@@ -495,7 +604,8 @@
                 metalness: 0.1,
                 emissive: 0.0,
                 glowColor: '#ff2200',
-                ambient: 'radial-gradient(circle at 30% 50%, #4a154b 0%, transparent 60%)'
+                ambient: 'radial-gradient(circle at 30% 50%, #4a154b 0%, transparent 60%)',
+                lightAmbient: 'radial-gradient(circle at 30% 50%, #fbe7e9 0%, transparent 60%)'
             },
             { // Vintage
                 baseColor: '#5c4033',
@@ -504,7 +614,8 @@
                 metalness: 0.0,
                 emissive: 0.0,
                 glowColor: '#000000',
-                ambient: 'radial-gradient(circle at 30% 50%, #301f11 0%, transparent 60%)'
+                ambient: 'radial-gradient(circle at 30% 50%, #301f11 0%, transparent 60%)',
+                lightAmbient: 'radial-gradient(circle at 30% 50%, #fef3c7 0%, transparent 60%)'
             },
             { // Aurum Elite
                 baseColor: '#d4af37',
@@ -513,7 +624,8 @@
                 metalness: 0.95,
                 emissive: 0.0,
                 glowColor: '#000000',
-                ambient: 'radial-gradient(circle at 30% 50%, #292410 0%, transparent 60%)'
+                ambient: 'radial-gradient(circle at 30% 50%, #292410 0%, transparent 60%)',
+                lightAmbient: 'radial-gradient(circle at 30% 50%, #fef9c3 0%, transparent 60%)'
             },
             { // Lumina Neon
                 baseColor: '#1a1a24',
@@ -522,7 +634,8 @@
                 metalness: 0.4,
                 emissive: 2.0,
                 glowColor: '#00ffcc',
-                ambient: 'radial-gradient(circle at 30% 50%, #153243 0%, transparent 60%)'
+                ambient: 'radial-gradient(circle at 30% 50%, #153243 0%, transparent 60%)',
+                lightAmbient: 'radial-gradient(circle at 30% 50%, #ecfeff 0%, transparent 60%)'
             }
         ];
 
@@ -543,7 +656,7 @@
             container.appendChild(renderer.domElement);
 
             // Lighting System
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+            ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
             scene.add(ambientLight);
 
             keyLight = new THREE.DirectionalLight(0xffffff, 1.5);
@@ -604,13 +717,12 @@
             scene.add(mainBall);
 
             // CREATE HIGH-FIDELITY BASEBALL SEAM STITCHES
-            // Stitches generated using standard parametric math of a baseball seam line
             generateBaseballStitches(1.6);
 
             // Window resize handler
             window.addEventListener('resize', onWindowResize);
             
-            // Mouse parallax movement handler for luxury 3D playability
+            // Mouse parallax movement handler
             let targetRotationX = 0;
             let targetRotationY = 0;
             let mouseX = 0;
@@ -645,7 +757,6 @@
                 renderer.render(scene, camera);
             }
             
-            // Start render loop on load
             animate();
         }
 
@@ -659,7 +770,6 @@
                 metalness: 0.1
             });
 
-            // Remove previous instanced meshes if reloading/customizing
             if (stitchInstances) {
                 scene.remove(stitchInstances);
             }
@@ -668,16 +778,10 @@
             
             const matrix = new THREE.Matrix4();
             const position = new THREE.Vector3();
-            const rotation = new THREE.Euler();
             const quaternion = new THREE.Quaternion();
             const scale = new THREE.Vector3(1, 1, 1);
 
-            // Baseball curve formula parameterised
-            // x = R * cos(t) * sqrt(1 - a^2 * cos^2(2t))
-            // y = R * sin(t) * sqrt(1 - a^2 * cos^2(2t))
-            // z = R * a * cos(2t)
             const a = 0.58; 
-            const seamOffset = 0.01; // Scale factor outwards so stitch sits above the sphere skin
 
             for (let i = 0; i < stitchCount; i++) {
                 const t = (i / stitchCount) * Math.PI * 2;
@@ -688,11 +792,9 @@
                 const y = radius * Math.sin(t) * factor;
                 const z = radius * a * Math.cos(2*t);
 
-                // Displace stitches outwards slightly so they reside perfectly on the skin surface
                 position.set(x, y, z).normalize().multiplyScalar(radius + 0.008);
 
                 // Dynamic stitch angle aligning with the seam tangent
-                // Numerical tangent approximation
                 const dt = 0.01;
                 const factor2 = Math.sqrt(1 - a*a * Math.pow(Math.cos(2*(t+dt)), 2));
                 const tx = radius * Math.cos(t+dt) * factor2;
@@ -703,8 +805,6 @@
                 const normal = position.clone().normalize();
                 const bitangent = new THREE.Vector3().crossVectors(tangent, normal).normalize();
 
-                // Rotate stitch so it lies flat on the sphere pointing along the seam, 
-                // but slightly offset/angled like high-grade hand-stitching (e.g. V-shaped pattern)
                 const angleOffset = (i % 2 === 0 ? 0.35 : -0.35); // V stitch alternating angle
                 const finalDirection = tangent.clone().applyAxisAngle(normal, angleOffset);
 
@@ -714,7 +814,6 @@
                 matrix.compose(position, quaternion, scale);
                 stitchInstances.setMatrixAt(i, matrix);
                 
-                // Color configuration
                 stitchInstances.setColorAt(i, new THREE.Color(activeSpecs.stitchColor));
             }
 
@@ -733,8 +832,9 @@
 
 
         // 3. GSAP SCROLLTRIGGER ENGINE FOR SECTIONS & BALL MATERIAL MORPHING
+        let activeSectionIndex = 0; // tracking scroll state
+
         function initAnimations() {
-            // Register GSAP ScrollTrigger
             gsap.registerPlugin(ScrollTrigger);
 
             const sections = document.querySelectorAll('.scroll-section');
@@ -754,7 +854,7 @@
 
             // Smoothly morphs the ball material parameters, stitch colors, light settings
             function updateBallState(profile, index) {
-                // Play aerodynamic atmospheric swoosh
+                activeSectionIndex = index;
                 synth.playWhoosh();
 
                 // 1. Update Navigation Dots
@@ -788,7 +888,6 @@
                 const stitchTargetColor = new THREE.Color(profile.stitchColor);
                 const tempColor = new THREE.Color();
                 
-                // Procedurally tween each individual instanced stitch color
                 const count = stitchInstances.count;
                 gsap.to({}, {
                     duration: 1.2,
@@ -797,7 +896,7 @@
                         const progress = this.progress();
                         for (let i = 0; i < count; i++) {
                             stitchInstances.getColorAt(i, tempColor);
-                            tempColor.lerp(stitchTargetColor, progress * 0.08); // smoothly blend
+                            tempColor.lerp(stitchTargetColor, progress * 0.08); 
                             stitchInstances.setColorAt(i, tempColor);
                         }
                         if (stitchInstances.instanceColor) {
@@ -806,21 +905,27 @@
                     }
                 });
 
-                // Modify stitch emissive properties (glow intensity) for Lumina Neon section
-                if (profile.emissive > 0) {
-                    gsap.to(rimLight, { intensity: 4, duration: 1.2 });
-                    rimLight.color.setHex(0x00ffcc);
+                // Modify stitch emissive properties (glow intensity)
+                if (isDarkMode) {
+                    if (profile.emissive > 0) {
+                        gsap.to(rimLight, { intensity: 4, duration: 1.2 });
+                        rimLight.color.setHex(0x00ffcc);
+                    } else {
+                        gsap.to(rimLight, { intensity: 2, duration: 1.2 });
+                        rimLight.color.setHex(0xa551e6); 
+                    }
                 } else {
-                    gsap.to(rimLight, { intensity: 2, duration: 1.2 });
-                    rimLight.color.setHex(0xa551e6); // luxury violet rim default
+                    // Light mode always stays a soft clean white rim
+                    gsap.to(rimLight, { intensity: 0.8, duration: 1.2 });
+                    rimLight.color.setHex(0xffffff);
                 }
 
                 // 3. Smooth Rotate the baseball base to showcase distinct faces per section
                 const targetRotations = [
-                    { x: 0.1, y: 0.4 },  // Classic face forward
-                    { x: 0.8, y: -0.6 }, // Vintage vertical texture slant
-                    { x: -0.5, y: 1.2 }, // Aurum gleaming golden orbit
-                    { x: 1.2, y: 2.3 }   // Cyberpunk abstract grid angles
+                    { x: 0.1, y: 0.4 },  
+                    { x: 0.8, y: -0.6 }, 
+                    { x: -0.5, y: 1.2 }, 
+                    { x: 1.2, y: 2.3 }   
                 ];
                 
                 gsap.to(mainBall.rotation, {
@@ -830,9 +935,9 @@
                     ease: "power3.out"
                 });
 
-                // 4. Update Backdrop Luxury ambient glows matching the section palettes
+                // 4. Update Backdrop glows matching the active theme mode
                 const ambientGlow = document.getElementById('ambient-glow');
-                ambientGlow.style.background = profile.ambient;
+                ambientGlow.style.background = isDarkMode ? profile.ambient : profile.lightAmbient;
 
                 // Sync current state specs with Interactive design customizer
                 activeSpecs = {
@@ -1002,10 +1107,12 @@
         glowSlider.addEventListener('input', (e) => {
             activeSpecs.emissive = parseFloat(e.target.value);
             glowVal.innerText = activeSpecs.emissive.toFixed(1);
-            if (activeSpecs.emissive > 0) {
-                rimLight.intensity = 2.0 + activeSpecs.emissive;
-            } else {
-                rimLight.intensity = 2.0;
+            if (isDarkMode) {
+                if (activeSpecs.emissive > 0) {
+                    rimLight.intensity = 2.0 + activeSpecs.emissive;
+                } else {
+                    rimLight.intensity = 2.0;
+                }
             }
         });
 
@@ -1013,12 +1120,11 @@
         document.getElementById('btn-save-specs').addEventListener('click', () => {
             synth.playCrack();
             
-            // Create bespoke modal alert instead of default native popups
             const alertBox = document.createElement('div');
             alertBox.className = "fixed inset-0 flex items-center justify-center z-50 px-4 bg-black/60 backdrop-blur-sm animate-fade-in";
             alertBox.innerHTML = `
                 <div class="glass-panel p-8 rounded-3xl max-w-sm w-full text-center border border-white/10 shadow-2xl">
-                    <div class="w-16 h-16 bg-purple-500/20 text-purple-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div class="w-16 h-16 bg-purple-500/20 text-purple-400 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
                         <i class="fa-solid fa-check text-2xl"></i>
                     </div>
                     <h4 class="luxury-font text-lg font-bold tracking-widest text-white mb-2">DESIGN SECURED</h4>
@@ -1035,14 +1141,65 @@
         });
 
 
-        // 5. WINDOW INITIALIZATION
+        // 5. LIGHT / DARK THEME TOGGLE ENGINE
+        const themeToggleBtn = document.getElementById('btn-theme-toggle');
+        
+        themeToggleBtn.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            synth.playCrack();
+
+            // Toggle HTML classes for instant style transition
+            document.body.classList.toggle('light-mode', !isDarkMode);
+
+            // Toggle Icon inside theme button
+            const themeIcon = themeToggleBtn.querySelector('i');
+            if (isDarkMode) {
+                themeIcon.className = "fa-solid fa-moon text-xs";
+            } else {
+                themeIcon.className = "fa-solid fa-sun text-xs";
+            }
+
+            // Smoothly adjust 3D scene lighting to suit light/dark backdrop
+            if (isDarkMode) {
+                gsap.to(ambientLight, { intensity: 0.4, duration: 0.8 });
+                gsap.to(keyLight, { intensity: 1.5, duration: 0.8 });
+                gsap.to(keyLight.color, { r: 1, g: 1, b: 1, duration: 0.8 });
+                gsap.to(pointLightLeft, { intensity: 0.5, duration: 0.8 });
+                gsap.to(pointLightRight, { intensity: 0.6, duration: 0.8 });
+                
+                const profile = ballProfiles[activeSectionIndex];
+                if (profile.emissive > 0) {
+                    gsap.to(rimLight, { intensity: 4, duration: 0.8 });
+                    rimLight.color.setHex(0x00ffcc);
+                } else {
+                    gsap.to(rimLight, { intensity: 2.0, duration: 0.8 });
+                    rimLight.color.setHex(0xa551e6);
+                }
+            } else {
+                // Bright, highly diffusive soft studio lights for Light Mode (The Gallery)
+                gsap.to(ambientLight, { intensity: 0.85, duration: 0.8 });
+                gsap.to(keyLight, { intensity: 1.8, duration: 0.8 });
+                gsap.to(keyLight.color, { r: 1, g: 0.98, b: 0.95, duration: 0.8 }); // warm sunny morning tone
+                gsap.to(rimLight, { intensity: 0.8, duration: 0.8 });
+                rimLight.color.setHex(0xffffff); // soft white outer edge glow
+                gsap.to(pointLightLeft, { intensity: 0.3, duration: 0.8 });
+                gsap.to(pointLightRight, { intensity: 0.4, duration: 0.8 });
+            }
+
+            // Dynamic background gradient switch
+            const activeProfile = ballProfiles[activeSectionIndex];
+            const ambientGlow = document.getElementById('ambient-glow');
+            ambientGlow.style.background = isDarkMode ? activeProfile.ambient : activeProfile.lightAmbient;
+        });
+
+
+        // 6. WINDOW INITIALIZATION
         window.onload = function() {
             init3D();
             initAnimations();
             
             // Simple ScrollTo plugin fallback directly with basic window scroll handling if GSAP scroll plugin doesn't load
             if (typeof gsap.plugins.scrollTo === 'undefined') {
-                // Procedural polyfill
                 gsap.registerPlugin({
                     name: "scrollTo",
                     init(target, value) {
