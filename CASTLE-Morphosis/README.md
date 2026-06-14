@@ -7,8 +7,7 @@ Castle Morphosis is an interactive single-page application (SPA) built with a cu
 Castle Morphosis is a visual transformation engine that morphs uploaded images or predefined silhouettes through **four distinct artistic styles**, each implemented with custom procedural rendering techniques. The result is a fluid, tactile, and highly interactive visual experience that blends analog art with digital precision.
 
 
-https://github.com/user-attachments/assets/7247e46d-ab2b-4aef-99ea-5105414d77a7
-
+https://github.com/user-attachments/assets/11e739a4-9272-4ddf-b145-a4cb32a8b342
 
 
 ---
