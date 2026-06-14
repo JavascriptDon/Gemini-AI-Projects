@@ -1,4 +1,4 @@
-# **Premium Baseball Showcase**
+# **3D-Baseball Showcase**
 
 An ultra‑premium, interactive 3D landing page and design studio crafted to showcase limited‑edition collector’s baseballs. 
 
