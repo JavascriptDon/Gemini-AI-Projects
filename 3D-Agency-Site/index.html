@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROAST & HYGGE // Slow Bar & Coffeeworks</title>
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAamheTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADTzrv/0867/+Dg4P/g4OD/4ODg/+Dg4P/g4OD/4ODg/+Dg4P/Tzrv/AAAAAAAAAAAAAAAAAAAAAAAAAADTzrv/4ODg///////g4OD/4ODg/+Dg4P/g4OD/4ODg/+Dg4P/g4OD/4ODg/+Dg4P/Tzrv/AAAAAAAAAABqZ15a/////+Dg4P/g4OD/4ODg/+Dg4P/g4OD/4ODg/+Dg4P/g4OD/4ODg/+Dg4P//////4ODg/wAAAAAAAAAAAAAAAODg4P//////4ODg/+Dg4P/g4OD/4ODg/+Dg4P/g4OD/4ODg/+Dg4P/W0sP//////+Dg4P8AAAAAAAAAAAAAAAAAAAAA0867///////g4OD/4ODg/+Dg4P/g4OD/4ODg/+Dg4P/g4OD/4ODg/9POu/8AAAAAAAAAAAAAAAAAAAAAAAAAANPOu///////4ODg/+Dg4P/g4OD/4ODg/+Dg4P/g4OD/4ODg/+Dg4P/g4OD/4ODg/wAAAAAAAAAAAAAAAAAAAADg4OD//////+Dg4P/g4OD/4ODg/+Dg4P/g4OD/4ODg/+Dg4P/g4OD/AAAAAAAAAADg4OD/AAAAAAAAAAAAAAAA4ODg/+Dg4P9BS23/QUtt/0FLbf9BS23/QUtt/0FLbf9BS23/4ODg/wAAAAAAAAAArKVq/wAAAAAAAAAAAAAAAODg4P9BS23/dZC1/0FLbf90kLX/QUtt/0FLbf90kLX/QUtt/0FLbf/g4OD/4ODg/+Dg4P8AAAAAAAAAAAAAAADf399X4ODg/3WQtf91kLX/dZC1/5uot/91kLX/dZC1/0FLbf/g4OD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg4OD/4ODg/9vY0P/Fw8D/4ODg/+Dg4P/g4OD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADVzblm1c25ZtXNuWbVzblmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANXNuWbVzblm1c25ZtXNuWbVzblmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADVzblm1c25ZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1c25ZgAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAMAPAACAAwAAgAMAAIADAADABwAAwAMAAMANAADADQAAwAEAAOAPAADwHwAA//8AAP//AAD//wAA//8AAA==" rel="icon" type="image/x-icon">
+    <!-- Tailwind CSS Engine -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #fcfbf7; /* Warm ceramic cream background */
+            font-family: 'Georgia', serif;
+            color: #2c2520; /* Deep espresso dark brown */
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10;
+            pointer-events: none; /* Passes mouse scrolling down to DOM smoothly */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 3D Scene Container -->
+    <canvas id="coffee-canvas"></canvas>
+
+    <!-- AUTOMATED HIDDEN AUDIO ELEMENT -->
+    <!-- Uses a pre-rendered ambient lofi coffee-shop stream track -->
+    <audio id="bg-music" loop src="./assets/music/Corner_Booth_View.mp3"></audio>
+
+    <button
+        id="music-toggle"
+        type="button"
+        aria-label="Play music"
+        class="fixed bottom-5 right-5 z-[60] flex h-12 w-12 items-center justify-center rounded-full border border-[#2c2520]/20 bg-[#fcfbf7]/85 text-[#2c2520] shadow-lg shadow-[#2c2520]/15 backdrop-blur-md transition-colors hover:bg-[#2c2520] hover:text-white focus:outline-none focus:ring-2 focus:ring-amber-700 focus:ring-offset-2"
+    >
+        <span id="music-icon" aria-hidden="true" class="text-lg leading-none">♪</span>
+    </button>
+
+    <!-- FIXED BRAND NAVIGATION-->
+    <header class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center bg-[#fcfbf7]/60 backdrop-blur-md border-b border-[#2c2520]/10">
+        <div class="text-xl font-bold tracking-tight text-[#2c2520]"><a href="#home">☕ ROAST & HYGGE.</a></div>
+		<nav class="hidden md:flex gap-10 text-xs font-sans uppercase tracking-widest font-semibold text-[#2c2520]/70">
+            <a href="#bean-bag"><span>01 / The Bean Bag</span></a>
+            <a href="#to-go-cup"><span>02 / The To-Go Cup</span></a>
+            <a href="#house-mug"><span>03 / House Mug</span></a>
+        </nav>
+        <button class="border border-[#2c2520] font-sans text-xs font-bold px-5 py-2 uppercase tracking-wider hover:bg-[#2c2520] hover:text-white transition-colors">
+            Order Online
+        </button>
+    </header>
+
+    <!-- OVERLAY LAYOUT CONTENT -->
+    <main class="relative z-20 w-full">
+        
+        <!-- 1. HERO SECTION -->
+        <section class="h-screen w-full flex flex-col justify-center px-6 md:px-24 max-w-4xl pointer-events-none">
+            <div id="home">
+                <span class="font-sans text-xs uppercase tracking-widest text-amber-800 font-bold bg-amber-100 px-3 py-1 rounded-full">Sustainably Sourced</span>
+                <h1 class="text-5xl md:text-8xl font-serif font-normal tracking-tight text-[#2c2520] my-6 leading-tight">
+                    Slowly roasted. <br><span class="italic text-amber-700">Beautifully served.</span>
+                </h1>
+                <p class="text-lg md:text-xl font-sans font-light text-[#2c2520]/80 max-w-md leading-relaxed">
+                    A multi-sensory web experience dedicated to the craft of exceptional micro-lot coffee packaging. Scroll down to take a seat at our slow bar.
+                </p>
+                <div class="mt-12 font-sans text-xs font-bold tracking-widest text-[#2c2520]/40 animate-pulse">
+                    ↓ TRACKPAD DOWN THE BAR
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PRODUCT SECTION: THE BEAN BAG -->
+        <section id="bean-bag"  class="h-screen w-full grid grid-cols-1 md:grid-cols-2 items-center px-6 md:px-24">
+            <div class="pointer-events-none"></div> <!-- 3D Model placeholder column -->
+            <div class="bg-white/40 border border-[#2c2520]/10 p-8 md:p-12 rounded-3xl shadow-sm backdrop-blur-md max-w-md ml-auto z-30">
+                <span class="font-sans text-xs uppercase tracking-widest text-amber-800 font-bold">Single-Origin Roast</span>
+                <h2 class="text-4xl font-serif text-[#2c2520] my-3">Ethiopia Yirgacheffe</h2>
+                <p class="font-sans font-light text-sm text-[#2c2520]/70 leading-relaxed mb-6">
+                    Our signature artisanal paper bag housing whole beans tasting intensely of heirloom jasmine, crisp bergamot citrus, and honey sweetness. 
+                </p>
+                
+                <div class="border-t border-b border-[#2c2520]/10 py-4 my-4 font-sans text-xs flex justify-between">
+                    <div><span class="block text-[#2c2520]/40 uppercase tracking-wider">Process</span><b class="text-sm font-semibold">Washed / Sun-Dried</b></div>
+                    <div><span class="block text-[#2c2520]/40 uppercase tracking-wider">Elevation</span><b class="text-sm font-semibold">1,900 - 2,200m</b></div>
+                    <div><span class="block text-[#2c2520]/40 uppercase tracking-wider">Net Wt</span><b class="text-sm font-semibold">250g</b></div>
+                </div>
+
+                <button id="btn-add-to-cart-1" class="w-full bg-[#2c2520] text-white font-sans text-xs font-bold py-4 tracking-widest rounded-xl hover:bg-amber-800 transition-colors uppercase shadow-md shadow-amber-950/10">
+                    Secure Bag — $18.50
+                </button>
+            </div>
+        </section>
+
+        <!-- 3. PRODUCT SECTION: THE TO-GO CUP -->
+        <section id="to-go-cup" class="h-screen w-full grid grid-cols-1 md:grid-cols-2 items-center px-6 md:px-24">
+            <div class="bg-white/40 border border-[#2c2520]/10 p-8 md:p-12 rounded-3xl shadow-sm backdrop-blur-md max-w-md mr-auto z-30">
+                <span class="font-sans text-xs uppercase tracking-widest text-emerald-800 font-bold">Compostable Vessel</span>
+                <h2 class="text-4xl font-serif text-[#2c2520] my-3">The Flat White To-Go</h2>
+                <p class="font-sans font-light text-sm text-[#2c2520]/70 leading-relaxed mb-6">
+                    Double-shot of extraction layered perfectly with velvety micro-foam milk inside our tactile cardboard insulation wrap. Engineered to maintain perfect drinking temperatures.
+                </p>
+                
+                <div class="bg-emerald-50 text-emerald-950 border border-emerald-900/10 rounded-xl p-3 font-sans text-xs flex items-center gap-3">
+                    <span class="text-base">🌱</span>
+                    <span>Our double-walled cups use 100% plant-based PLA lining, keeping your caffeine fix completely plastic-free.</span>
+                </div>
+
+                <button id="btn-add-to-cart-2" class="w-full mt-6 bg-[#2c2520] text-white font-sans text-xs font-bold py-4 tracking-widest rounded-xl hover:bg-emerald-800 transition-colors uppercase shadow-md">
+                    Order for Pickup — $5.25
+                </button>
+            </div>
+            <div></div> <!-- 3D Model placeholder column -->
+        </section>
+
+        <!-- 4. PRODUCT SECTION: CERAMIC HOUSE MUG -->
+        <section id="house-mug" class="h-screen w-full grid grid-cols-1 md:grid-cols-2 items-center px-6 md:px-24 pb-24">
+            <div class="pointer-events-none"></div> <!-- 3D Model placeholder column -->
+            <div class="bg-white/40 border border-[#2c2520]/10 p-8 md:p-12 rounded-3xl shadow-sm backdrop-blur-md max-w-md ml-auto z-30">
+                <span class="font-sans text-xs uppercase tracking-widest text-orange-800 font-bold">Studio Ceramic Merchandise</span>
+                <h2 class="text-4xl font-serif text-[#2c2520] my-3">The Ceramic Diner Mug</h2>
+                <p class="font-sans font-light text-sm text-[#2c2520]/70 leading-relaxed mb-6">
+                    Hand-thrown stoneware mug built with heavy, speckled clay. Glazed with our warm signature matte finishes to nestle comfortably in your hand every morning.
+                </p>
+                
+                <ul class="font-sans text-xs text-[#2c2520]/80 space-y-2 mb-6 list-disc list-inside">
+                    <li>Dishwasher and microwave safe construction</li>
+                    <li>Thick walls engineered for optimal thermal insulation</li>
+                    <li>Individually unique speckling pattern matrix</li>
+                </ul>
+
+                <button id="btn-add-to-cart-3" class="w-full bg-[#2c2520] text-white font-sans text-xs font-bold py-4 tracking-widest rounded-xl hover:bg-orange-800 transition-colors uppercase shadow-md">
+                    Collect Merchandise — $24.00
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- CORE DEPENDENCY CDN PIPELINE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+ 
+    <!-- Button Order Script-->
+    <script>
+      function addItemToCart(buttonId) {
+            let itemName = '';
+            let itemPrice = 0;
+
+            switch (buttonId) {
+                case 'btn-add-to-cart-1':
+                    itemName = 'Ethiopia Yirgacheffe Bean Bag';
+                    itemPrice = 18.50;
+                    break;
+                case 'btn-add-to-cart-2':
+                    itemName = 'Flat White To-Go Cup';
+                    itemPrice = 5.25;
+                    break;
+                case 'btn-add-to-cart-3':
+                    itemName = 'Ceramic Diner Mug';
+                    itemPrice = 24.00;
+                    break;
+                default:
+                    console.error('Unknown button ID:', buttonId);
+                    return;
+            }
+
+            // Simulate adding to cart (you can replace this with actual cart logic)
+            console.log(`Added to cart: ${itemName} - $${itemPrice.toFixed(2)}`);
+            alert(`Added to cart: ${itemName} - $${itemPrice.toFixed(2)}`);
+        }
+        document.querySelector('#btn-add-to-cart-1').addEventListener('click', () => {
+            addItemToCart('btn-add-to-cart-1');
+        });
+
+        document.querySelector('#btn-add-to-cart-2').addEventListener('click', () => {
+            addItemToCart('btn-add-to-cart-2');
+        });
+
+        document.querySelector('#btn-add-to-cart-3').addEventListener('click', () => {
+            addItemToCart('btn-add-to-cart-3');
+        });
+    </script>
+
+    <script>
+      // --- 0. SITE AUDIO TRIGGER LOGIC ---
+        const audioTrack = document.getElementById('bg-music');
+        const musicToggle = document.getElementById('music-toggle');
+        const musicIcon = document.getElementById('music-icon');
+
+        if (audioTrack && musicToggle && musicIcon) {
+            musicToggle.addEventListener('click', async () => {
+                if (audioTrack.paused) {
+                    try {
+                        await audioTrack.play();
+                        musicIcon.innerText = '||';
+                        musicToggle.setAttribute('aria-label', 'Pause music');
+                    } catch (error) {
+                        console.error('Music playback failed:', error);
+                    }
+                } else {
+                    audioTrack.pause();
+                    musicIcon.innerText = String.fromCharCode(9834);
+                    musicToggle.setAttribute('aria-label', 'Play music');
+                }
+            });
+        }
+    </script>
+    
+    <!-- WEBGL ENGINE & INTERACTIVE LOGIC SCRIPT -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // --- 1. INITIAL SCENE & RENDERER FRAME ---
+        const canvas = document.querySelector('#coffee-canvas');
+        const scene = new THREE.Scene();
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 0, 5); // Base viewport matrix setup
+
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+
+        // --- 2. CAFE LIGHTING DESIGN (Warm Coffee Shop Studio Style) ---
+        const ambientLight = new THREE.AmbientLight('#fff7ed', 0.9); // Warm tint filling shadows
+        scene.add(ambientLight);
+
+        const keyLight = new THREE.DirectionalLight('#ffffff', 1.8); // High contrast key lighting
+        keyLight.position.set(5, 8, 4);
+        keyLight.castShadow = true;
+        scene.add(keyLight);
+
+        const rimLight = new THREE.DirectionalLight('#ffe4e6', 0.8); // Subtle pink backrim illumination
+        rimLight.position.set(-5, 2, -3);
+        scene.add(rimLight);
+
+        // --- 3. PROCEDURAL TEXTURE PIPELINE (Generates your Blender label maps instantly) ---
+        function createCoffeeLabel(title, bgHex, accentHex) {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = 512;
+            tempCanvas.height = 512;
+            const ctx = tempCanvas.getContext('2d');
+            
+            // Draw baseline background wrap
+            ctx.fillStyle = bgHex;
+            ctx.fillRect(0, 0, 512, 512);
+            
+            // Design modern minimalist geometric borders
+            ctx.strokeStyle = accentHex;
+            ctx.lineWidth = 8;
+            ctx.strokeRect(30, 30, 452, 452);
+            
+            // Main Branding Typographic prints
+            ctx.fillStyle = accentHex;
+            ctx.font = 'bold 36px Georgia';
+            ctx.textAlign = 'center';
+            ctx.fillText(title, 256, 140);
+            
+            ctx.font = 'normal 16px sans-serif';
+            ctx.letterSpacing = "4px";
+            ctx.fillText("ROAST & HYGGE CO.", 256, 200);
+            
+            // Modern organic layout badge element
+            ctx.fillStyle = accentHex;
+            ctx.beginPath();
+            ctx.arc(256, 320, 45, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = bgHex;
+            ctx.font = 'bold 20px serif';
+            ctx.fillText("QC", 256, 328);
+            
+            const texture = new THREE.CanvasTexture(tempCanvas);
+            return texture;
+        }
+
+        // --- 4. COFFEE PRODUCT MESH ARCHITECTURES ---
+        
+        function createRoundedRectShape(width, height, radius) {
+            const x = -width / 2;
+            const y = -height / 2;
+            const shape = new THREE.Shape();
+
+            shape.moveTo(x + radius, y);
+            shape.lineTo(x + width - radius, y);
+            shape.quadraticCurveTo(x + width, y, x + width, y + radius);
+            shape.lineTo(x + width, y + height - radius);
+            shape.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            shape.lineTo(x + radius, y + height);
+            shape.quadraticCurveTo(x, y + height, x, y + height - radius);
+            shape.lineTo(x, y + radius);
+            shape.quadraticCurveTo(x, y, x + radius, y);
+
+            return shape;
+        }
+
+        function createRoundedBox(width, height, depth, radius, material) {
+            const shape = createRoundedRectShape(width, height, radius);
+            const geometry = new THREE.ExtrudeGeometry(shape, {
+                depth,
+                bevelEnabled: true,
+                bevelSize: radius * 0.35,
+                bevelThickness: radius * 0.35,
+                bevelSegments: 5,
+                curveSegments: 10
+            });
+            geometry.center();
+            return new THREE.Mesh(geometry, material);
+        }
+
+        function createLabelPanel(title, width, height, bgHex, accentHex) {
+            const panelGeo = new THREE.PlaneGeometry(width, height);
+            const panelMat = new THREE.MeshStandardMaterial({
+                map: createCoffeeLabel(title, bgHex, accentHex),
+                roughness: 0.72,
+                metalness: 0.02
+            });
+            return new THREE.Mesh(panelGeo, panelMat);
+        }
+
+        function createSpeckledMaterial(baseColor, speckleColor, roughness = 0.8, speckleCount = 160) {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = 256;
+            tempCanvas.height = 256;
+            const ctx = tempCanvas.getContext('2d');
+
+            ctx.fillStyle = baseColor;
+            ctx.fillRect(0, 0, 256, 256);
+
+            for (let i = 0; i < speckleCount; i++) {
+                const x = (Math.sin(i * 12.9898) * 43758.5453) % 1;
+                const y = (Math.sin(i * 78.233) * 24634.6345) % 1;
+                const size = 1.1 + (i % 5) * 0.45;
+                ctx.globalAlpha = 0.18 + (i % 4) * 0.08;
+                ctx.fillStyle = speckleColor;
+                ctx.beginPath();
+                ctx.arc(Math.abs(x) * 256, Math.abs(y) * 256, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+
+            const texture = new THREE.CanvasTexture(tempCanvas);
+            texture.wrapS = THREE.RepeatWrapping;
+            texture.wrapT = THREE.RepeatWrapping;
+
+            return new THREE.MeshStandardMaterial({
+                color: baseColor,
+                map: texture,
+                roughness,
+                metalness: 0.01
+            });
+        }
+
+        function createTinyAccentDot(radius, color) {
+            return new THREE.Mesh(
+                new THREE.CircleGeometry(radius, 20),
+                new THREE.MeshStandardMaterial({ color, roughness: 0.7, side: THREE.DoubleSide })
+            );
+        }
+
+        function addLabelAccent(parent, mesh, x, y, z = 0.242) {
+            mesh.position.set(x, y, z);
+            parent.add(mesh);
+            return mesh;
+        }
+
+        function enableProductShadows(product) {
+            product.traverse((child) => {
+                if (child.isMesh) {
+                    child.castShadow = true;
+                    child.receiveShadow = true;
+                }
+            });
+        }
+
+        // Asset 1: Modern gusseted bean bag with folded seal, label, and side panels
+        const productBag = new THREE.Group();
+        const bagBodyMat = createSpeckledMaterial('#b9824b', '#f4d7a1', 0.92, 220);
+        const bagSideMat = createSpeckledMaterial('#9a6a3a', '#e6c08a', 0.94, 160);
+        const bagSealMat = createSpeckledMaterial('#e8c68f', '#fff3d0', 0.88, 120);
+
+        const bagBody = createRoundedBox(1.02, 1.55, 0.42, 0.09, bagBodyMat);
+        productBag.add(bagBody);
+
+        const bagFrontLabel = createLabelPanel('ETHIOPIA', 0.72, 0.78, '#fef3c7', '#92400e');
+        bagFrontLabel.position.set(0, -0.03, 0.236);
+        productBag.add(bagFrontLabel);
+
+        const jasmineCenter = createTinyAccentDot(0.028, '#fefce8');
+        addLabelAccent(productBag, jasmineCenter, -0.23, -0.33);
+        for (let i = 0; i < 5; i++) {
+            const petal = createTinyAccentDot(0.026, '#fff7ed');
+            const angle = (Math.PI * 2 * i) / 5;
+            addLabelAccent(productBag, petal, -0.23 + Math.cos(angle) * 0.05, -0.33 + Math.sin(angle) * 0.05);
+        }
+
+        const bergamotRing = new THREE.Mesh(
+            new THREE.TorusGeometry(0.065, 0.008, 8, 28),
+            new THREE.MeshStandardMaterial({ color: '#facc15', roughness: 0.55 })
+        );
+        addLabelAccent(productBag, bergamotRing, 0.22, -0.32, 0.244);
+
+        const honeyDrop = new THREE.Mesh(
+            new THREE.ConeGeometry(0.045, 0.11, 24),
+            new THREE.MeshStandardMaterial({ color: '#d97706', roughness: 0.45, metalness: 0.02 })
+        );
+        honeyDrop.position.set(0.02, -0.41, 0.244);
+        honeyDrop.rotation.z = Math.PI;
+        productBag.add(honeyDrop);
+
+        const bagTopFold = createRoundedBox(0.94, 0.16, 0.48, 0.035, bagSealMat);
+        bagTopFold.position.y = 0.82;
+        bagTopFold.rotation.x = -0.08;
+        productBag.add(bagTopFold);
+
+        const bagBottomFold = createRoundedBox(0.82, 0.08, 0.46, 0.03, bagSideMat);
+        bagBottomFold.position.y = -0.82;
+        productBag.add(bagBottomFold);
+
+        [-1, 1].forEach((side) => {
+            const gusset = createRoundedBox(0.08, 1.25, 0.36, 0.025, bagSideMat);
+            gusset.position.x = side * 0.55;
+            gusset.rotation.y = side * -0.16;
+            productBag.add(gusset);
+        });
+
+        const valveGeo = new THREE.CylinderGeometry(0.07, 0.07, 0.018, 28);
+        const valveMat = new THREE.MeshStandardMaterial({ color: '#2c2520', roughness: 0.35, metalness: 0.18 });
+        const bagValve = new THREE.Mesh(valveGeo, valveMat);
+        bagValve.position.set(0.29, 0.48, 0.25);
+        bagValve.rotation.x = Math.PI / 2;
+        productBag.add(bagValve);
+
+        enableProductShadows(productBag);
+        scene.add(productBag);
+
+        // Asset 2: Modern to-go cup with tapered body, sleeve, lid, rim, and sip slot
+        const productCup = new THREE.Group();
+        const cupBodyMat = new THREE.MeshStandardMaterial({
+            color: '#f8f1e7',
+            roughness: 0.68,
+            metalness: 0.02
+        });
+        const cupSleeveMat = new THREE.MeshStandardMaterial({
+            map: createCoffeeLabel('DOUBLE', '#8b5e34', '#fef3c7'),
+            roughness: 0.9,
+            metalness: 0.01
+        });
+        const lidMat = new THREE.MeshStandardMaterial({ color: '#fcfbf7', roughness: 0.28, metalness: 0.04 });
+        const darkDetailMat = new THREE.MeshStandardMaterial({ color: '#2c2520', roughness: 0.5, metalness: 0.1 });
+        const espressoMat = new THREE.MeshStandardMaterial({ color: '#4a2615', roughness: 0.46, metalness: 0.02 });
+        const foamMat = new THREE.MeshStandardMaterial({ color: '#fff7ed', roughness: 0.35, metalness: 0.01 });
+        const sleeveRibMat = new THREE.MeshStandardMaterial({ color: '#6f4628', roughness: 0.92, metalness: 0.01 });
+
+        const cupBody = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.34, 1.32, 48, 1, false), cupBodyMat);
+        productCup.add(cupBody);
+
+        const cupSleeve = new THREE.Mesh(new THREE.CylinderGeometry(0.47, 0.39, 0.48, 48, 1, true), cupSleeveMat);
+        cupSleeve.position.y = -0.12;
+        productCup.add(cupSleeve);
+
+        for (let i = 0; i < 6; i++) {
+            const ribRadius = 0.405 + i * 0.012;
+            const rib = new THREE.Mesh(new THREE.TorusGeometry(ribRadius, 0.006, 8, 48), sleeveRibMat);
+            rib.position.y = -0.31 + i * 0.075;
+            rib.rotation.x = Math.PI / 2;
+            productCup.add(rib);
+        }
+
+        const espressoBand = new THREE.Mesh(new THREE.CylinderGeometry(0.49, 0.46, 0.075, 48), espressoMat);
+        espressoBand.position.y = 0.53;
+        productCup.add(espressoBand);
+
+        const microFoamBand = new THREE.Mesh(new THREE.CylinderGeometry(0.51, 0.49, 0.065, 48), foamMat);
+        microFoamBand.position.y = 0.61;
+        productCup.add(microFoamBand);
+
+        const foamSurface = new THREE.Mesh(new THREE.CircleGeometry(0.43, 48), foamMat);
+        foamSurface.position.y = 0.655;
+        foamSurface.rotation.x = -Math.PI / 2;
+        productCup.add(foamSurface);
+
+        const cupLid = new THREE.Mesh(new THREE.CylinderGeometry(0.56, 0.49, 0.17, 48), lidMat);
+        cupLid.position.y = 0.72;
+        productCup.add(cupLid);
+
+        const lidRim = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.035, 12, 48), lidMat);
+        lidRim.position.y = 0.82;
+        lidRim.rotation.x = Math.PI / 2;
+        productCup.add(lidRim);
+
+        const sipSlot = createRoundedBox(0.22, 0.045, 0.045, 0.018, darkDetailMat);
+        sipSlot.position.set(0, 0.88, 0.22);
+        sipSlot.rotation.x = -0.28;
+        productCup.add(sipSlot);
+
+        const cupBase = new THREE.Mesh(new THREE.TorusGeometry(0.35, 0.025, 10, 44), darkDetailMat);
+        cupBase.position.y = -0.68;
+        cupBase.rotation.x = Math.PI / 2;
+        productCup.add(cupBase);
+
+        enableProductShadows(productCup);
+        scene.add(productCup);
+
+        // Asset 3: Modern ceramic house mug with thick walls, coffee surface, handle, and badge
+        const productMug = new THREE.Group();
+        const mugMat = createSpeckledMaterial('#9a4f2f', '#f5d0a6', 0.82, 260);
+        const mugInnerMat = createSpeckledMaterial('#c7794b', '#ffe7c2', 0.78, 180);
+        const mugRingMat = createSpeckledMaterial('#7c2d12', '#f5d0a6', 0.84, 160);
+        const coffeeMat = new THREE.MeshStandardMaterial({ color: '#3f2415', roughness: 0.42, metalness: 0.02 });
+
+        const mugBody = new THREE.Mesh(new THREE.CylinderGeometry(0.58, 0.5, 1.08, 56, 5, true), mugMat);
+        productMug.add(mugBody);
+
+        const mugInnerWall = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.39, 0.98, 56, 1, true), mugInnerMat);
+        mugInnerWall.position.y = 0.03;
+        productMug.add(mugInnerWall);
+
+        const mugTopRim = new THREE.Mesh(new THREE.TorusGeometry(0.52, 0.07, 14, 56), mugRingMat);
+        mugTopRim.position.y = 0.55;
+        mugTopRim.rotation.x = Math.PI / 2;
+        productMug.add(mugTopRim);
+
+        [-0.28, -0.04, 0.22].forEach((y, index) => {
+            const throwRing = new THREE.Mesh(
+                new THREE.TorusGeometry(0.49 + index * 0.018, 0.012, 8, 56),
+                mugRingMat
+            );
+            throwRing.position.y = y;
+            throwRing.rotation.x = Math.PI / 2;
+            productMug.add(throwRing);
+        });
+
+        const mugFoot = new THREE.Mesh(new THREE.TorusGeometry(0.43, 0.055, 12, 48), mugRingMat);
+        mugFoot.position.y = -0.54;
+        mugFoot.rotation.x = Math.PI / 2;
+        productMug.add(mugFoot);
+
+        const coffeeSurface = new THREE.Mesh(new THREE.CircleGeometry(0.43, 56), coffeeMat);
+        coffeeSurface.position.y = 0.52;
+        coffeeSurface.rotation.x = -Math.PI / 2;
+        productMug.add(coffeeSurface);
+
+        const mugHandle = new THREE.Mesh(new THREE.TorusGeometry(0.32, 0.085, 16, 48, Math.PI * 1.14), mugRingMat);
+        mugHandle.position.set(0.59, 0.02, 0);
+        mugHandle.rotation.z = -Math.PI / 2;
+        productMug.add(mugHandle);
+
+        const mugBadge = createLabelPanel('HOUSE', 0.4, 0.28, '#ffedd5', '#7c2d12');
+        mugBadge.position.set(0, -0.07, 0.586);
+        productMug.add(mugBadge);
+
+        enableProductShadows(productMug);
+        scene.add(productMug);
+        // --- 5. GSAP SCROLLTRIGGER SCENE TIMELINE (SHELF CHOREOGRAPHY) ---
+        // Pre-stage default locations away from initial view state
+        productBag.position.set(1.2, 0, -1);
+        productCup.position.set(0, -4, 0);
+        productMug.position.set(0, -4, 0);
+        
+        productBag.rotation.set(0.1, -Math.PI / 6, 0);
+
+        const scrollTimeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: "main",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1.2, // Connects movement fluidly to finger/wheel pacing
+            }
+        });
+
+        // Frame 1 to Frame 2: Move Bean Bag to the left spotlight for Section 2
+        scrollTimeline.to(productBag.position, { x: -1.3, y: 0, z: 1.2, duration: 1.5, ease: "power2.inOut" })
+                      .to(productBag.rotation, { y: Math.PI / 5, x: 0.2, duration: 1.5, ease: "power2.inOut" }, "<")
+
+        // Frame 2 to Frame 3: Swoop Bag out of view right, slide Paper Cup onto right shelf
+        scrollTimeline.to(productBag.position, { x: 4, y: 2, z: -2, duration: 1.5, ease: "power2.inOut" })
+                      .to(productCup.position, { x: 1.3, y: -0.1, z: 1.4, duration: 1.5, ease: "power2.inOut" }, "<")
+                      .to(productCup.rotation, { y: -Math.PI / 3, z: 0.1, duration: 1.5, ease: "power2.inOut" }, "<")
+
+        // Frame 3 to Frame 4: Swoop Paper Cup out left, glide Heavy Stoneware Mug center-left
+        scrollTimeline.to(productCup.position, { x: -4, y: 2, z: -2, duration: 1.5, ease: "power2.inOut" })
+                      .to(productMug.position, { x: -1.2, y: -0.2, z: 1.5, duration: 1.5, ease: "power2.inOut" }, "<")
+                      .to(productMug.rotation, { y: Math.PI / 1.5, x: 0.1, duration: 1.5, ease: "power2.inOut" }, "<");
+
+        // --- 6. IDLE AMBIENT FLOAT & RENDER RUNTIME LOOP ---
+        const runtimeClock = new THREE.Clock();
+
+        function renderLoop() {
+            const deltaSec = runtimeClock.getElapsedTime();
+
+            // Run subtle cosmetic physics calculations if components are in viewport window range
+            if (productBag.position.x > -3 && productBag.position.x < 3) {
+                productBag.position.y += Math.sin(deltaSec * 1.5) * 0.0015;
+                productBag.rotation.y += 0.001;
+            }
+            if (productCup.position.x > -3 && productCup.position.x < 3) {
+                productCup.position.y += Math.cos(deltaSec * 2.0) * 0.0015;
+                productCup.rotation.y -= 0.002;
+            }
+            if (productMug.position.x > -3 && productMug.position.x < 3) {
+                productMug.position.y += Math.sin(deltaSec * 1.2) * 0.0015;
+                productMug.rotation.y += 0.001;
+            }
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(renderLoop);
+        }
+        renderLoop();
+
+        // --- 7. DEBOUNCED VIEWPORT RESIZE CORRECTION ---
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
+

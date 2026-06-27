@@ -30,6 +30,15 @@ Designed as a visual showcase of motion, lighting, and interactive camera behavi
 
 ---
 
+### **3. 3D Agency**
+3D Agency is a scroll-driven product showcase for a modern coffee brand. It combines editorial product copy, procedural Three.js models, animated section transitions, and lightweight storefront interactions into a single-page experience.
+
+**Explore the project:**  
+➡️ `./3D-Agency-Site/`  
+(Contains its own dedicated README and project structure.)
+
+---
+
 ## **📦 Repository Structure**
 
 ```
@@ -42,6 +51,10 @@ Designed as a visual showcase of motion, lighting, and interactive camera behavi
 │   ├── index.html
 │   └── README.md
 │
+├── 3D-Agency-Site/
+│   ├── index.html
+|   ├── assets/music/corner_booth_view.mp3
+│   └── README.md
 └── README.md   ← You are here
 ```
 
