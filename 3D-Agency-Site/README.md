@@ -2,6 +2,8 @@
 
 3D Agency is a scroll-driven product showcase for a modern coffee brand. It combines editorial product copy, procedural Three.js models, animated section transitions, and lightweight storefront interactions into a SPA experience.
 
+https://github.com/user-attachments/assets/6bd6c5e7-c9e8-4567-89b1-f764125456e3
+
 ## Overview
 
 The page presents three coffee-focused products as interactive 3D objects:
